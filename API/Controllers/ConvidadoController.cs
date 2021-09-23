@@ -54,9 +54,9 @@ namespace API.Controllers
 
                 return todos.ToList();
             }
-            catch 
+            catch
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados.");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. ");
             }
         }
 
