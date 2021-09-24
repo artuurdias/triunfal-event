@@ -10,7 +10,7 @@ DBCC CHECKIDENT(Usuario, RESEED, 0)
 insert into TipoEvento values('Evento social', 'Os eventos sociais têm como objetivo a 
 comemoração de algum momento marcante. Por isso, eles não possuem caráter comercial nem buscam 
 obter lucros: aqui, a intenção é reunir família, amigos, colegas de trabalho e pessoas importantes
-na sua vida para festejar!', 'Coquetel; Festas em geral; Chás; Noivado; Open House; Casamentos; Aniversários; Happy hours; Churrascos; Formaturas;')
+na sua vida para festejar!', 'Coquetel; Festas em geral; Chás; Noivado; Open House; Casamentos; Aniversários; Happy hours; Churrascos;')
 
 insert into TipoEvento values('Evento corporativo', 'Os eventos corporativos são realizados por uma
 empresa ou instituição. Podendo ser realizados nos mais diferentes formatos, esse tipo de evento é
@@ -44,16 +44,6 @@ insert into Evento values('298GCV', 'PD Party 2022', 'Evento social', '12/04/202
 insert into Evento values('DCGFR4', 'Gincana COTUCA', 'Evento esportivo', '18/12/2021', 'Colégio Técnico de Campinas')
 select * from Evento
 delete from Evento where id  <> ' ';
-
-
-/**********************************************************************************************************************/
-
-insert into Organizador values('JDN764', 'Fabriciao')
-insert into Organizador values('298GCV', 'Fabiao')
-insert into Organizador values('DCGFR4', 'Arturzao')
-select * from Organizador
-delete from Organizador where idOrganizador >= 0
-DBCC CHECKIDENT(Organizador, RESEED, 0)
 
 /**********************************************************************************************************************/
 
@@ -92,12 +82,14 @@ DBCC CHECKIDENT(Feriado, RESEED, 0)
 
 /**********************************************************************************************************************/
 
-insert into Dica values('Evento social', 'Dica 1')
-insert into Dica values('Evento corporativo', 'Dica 2')
-insert into Dica values('Evento religioso', 'Dica 3')
-insert into Dica values('Evento acadêmico', 'Dica 4')
-insert into Dica values('Evento esportivo', 'Dica 5')
+insert into Dica values('Evento social',		'Dica 1')
+insert into Dica values('Evento corporativo',	'Dica 2')
+insert into Dica values('Evento religioso',		'Dica 3')
+insert into Dica values('Evento acadêmico',		'Dica 4')
+insert into Dica values('Evento esportivo',		'Dica 5')
 
 select * from Dica
 delete from Dica where id >= 0
 DBCC CHECKIDENT(Dica, RESEED, 0)
+
+/**********************************************************************************************************************/

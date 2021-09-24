@@ -19,15 +19,9 @@ create table Evento (
 	tipo varchar(50) not null,
 	data varchar(10) not null,
 	local varchar(50) not null,
+	organizador varchar(25) not null,
+	foreign key (organizador) references Usuario(username),
 	foreign key (tipo)	      references TipoEvento(nome)
-)
-
-create table Organizador (
-	idOrganizador int identity(1,1) primary key,
-	idEvento char(6) not null,
-	nomeUsuario varchar(25) not null,
-	foreign key (idEvento)    references Evento(id),
-	foreign key (nomeUsuario) references Usuario(username)
 )
 
 
@@ -68,7 +62,6 @@ create table Dica (
 drop table Usuario
 drop table TipoEvento
 drop table Evento
-drop table Organizador
 drop table Convidado
 drop table Dica
 drop table Lembrete
@@ -85,5 +78,6 @@ drop table Feriado
 	Criei tabela TipoEvento 
 	Alterei a tabela EVento para q recebesse a foreing key TipoEvento
 	coloquei um campo descrição para a tabela lembrete
+	Adicionei organizador na tabela evento como fk
 */
 
