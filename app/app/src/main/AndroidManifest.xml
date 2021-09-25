@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.unicamp.projetopratica">
+    package="br.unicamp.triunfalevent">
 
     <application
         android:allowBackup="true"
@@ -8,36 +8,50 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ProjetoPratica">
-        <activity
-            android:name=".Convites"
-            android:exported="true" />
-        <activity
-            android:name=".Home"
-            android:exported="true" />
-        <activity
-            android:name=".EventosAtivos"
-            android:exported="true" />
-        <activity
-            android:name=".CriarLembrete"
-            android:exported="true" />
-        <activity
-            android:name=".CriarEvento"
-            android:exported="true" />
+        android:theme="@style/Theme.TriunfalEvent">
         <activity
             android:name=".Convidar"
+            android:exported="true" />
+        <activity
+            android:name=".Convite"
+            android:exported="true" />
+        <activity
+            android:name=".Eventos"
+            android:exported="true" />
+        <activity
+            android:name=".FormEvento"
             android:exported="true" />
         <activity
             android:name=".Calendario"
             android:exported="true" />
         <activity
-            android:name=".Cadastro"
+            android:name=".ui.login.LoginActivity"
+            android:exported="true"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".Homepage"
+            android:exported="true"
+            android:label="@string/title_activity_homepage"
+            android:theme="@style/Theme.TriunfalEvent.NoActionBar" />
+        <activity
+            android:name=".Home"
             android:exported="true" />
         <activity
-            android:name=".Login"
+            android:name=".MenuActivity"
+            android:exported="true"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/Theme.TriunfalEvent.NoActionBar" />
+        <activity
+            android:name=".FormCadastra"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Profile"
+            android:exported="true" />
+        <activity
+            android:name=".FormLogin"
+            android:exported="true" />
+        <activity
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_homepage"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Homepage" />
+
+
+        <item
+            android:id="@+id/nav_eventos"
+            android:icon="@drawable/ic_baseline_event_24"
+            android:title="Eventos" />
+
+        <item
+            android:id="@+id/nav_convites"
+            android:icon="@drawable/ic_baseline_contacts_24"
+            android:title="Convidados" />
+
+        <item
+            android:id="@+id/nav_calendario"
+            android:icon="@drawable/ic_baseline_calendar_today_24"
+            android:title="Calendário" />
+
+        <item
+            android:id="@+id/nav_config"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="Configurações" />
+    </group>
+</menu>
