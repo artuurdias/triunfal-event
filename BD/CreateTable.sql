@@ -1,7 +1,7 @@
 create table Usuario (
 	username varchar(25) primary key,
 	nome varchar(100) not null,
-	nascimento char(10) not null,
+	nascimento varchar(10) not null,
 	email varchar(100) unique not null,
 	senha varchar(20) not null
 )
@@ -63,10 +63,9 @@ drop table Usuario
 drop table TipoEvento
 drop table Evento
 drop table Convidado
-drop table Dica
 drop table Lembrete
 drop table Feriado
-
+drop table Dica
 
 /*
 	Adicionei usuario no lembrete

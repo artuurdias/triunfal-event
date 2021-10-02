@@ -39,9 +39,9 @@ delete from TipoEvento where id >= 0
 
 /**********************************************************************************************************************/
 
-insert into Evento values('JDN764', 'Churrascão do Fabio', 'Evento social', '23/09/2021', 'Churrascaria O Matuto')
-insert into Evento values('298GCV', 'PD Party 2022', 'Evento social', '12/04/2021', 'Chácara Belo Horizonte')
-insert into Evento values('DCGFR4', 'Gincana COTUCA', 'Evento esportivo', '18/12/2021', 'Colégio Técnico de Campinas')
+insert into Evento values('JDN764', 'Churrascão do Fabio', 'Evento social', '23/09/2021', 'Churrascaria O Matuto', 'Fabiao')
+insert into Evento values('298GCV', 'PD Party 2022', 'Evento social', '12/04/2021', 'Chácara Belo Horizonte', 'Fabriciao')
+insert into Evento values('DCGFR4', 'Gincana COTUCA', 'Evento esportivo', '18/12/2021', 'Colégio Técnico de Campinas', 'Arturzao')
 select * from Evento
 delete from Evento where id  <> ' ';
 
@@ -73,9 +73,10 @@ insert into Feriado values('Corpus Christi', '03/06')
 insert into Feriado values('Independência do Brasil', '07/09')
 insert into Feriado values('Nossa Senhora Aparecida', '12/10')
 insert into Feriado values('Dia das Crianças', '02/11')
-insert into Feriado values('Proclamação da República', '1S5/11')
+insert into Feriado values('Proclamação da República', '15/11')
 insert into Feriado values('Natal', '25/12')
 
+.
 select * from Feriado
 delete from Feriado where id >= 0
 DBCC CHECKIDENT(Feriado, RESEED, 0)
@@ -87,6 +88,7 @@ insert into Dica values('Evento corporativo',	'Dica 2')
 insert into Dica values('Evento religioso',		'Dica 3')
 insert into Dica values('Evento acadêmico',		'Dica 4')
 insert into Dica values('Evento esportivo',		'Dica 5')
+
 
 select * from Dica
 delete from Dica where id >= 0

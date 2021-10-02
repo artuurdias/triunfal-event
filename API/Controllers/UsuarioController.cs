@@ -34,7 +34,7 @@ namespace API.Controllers
             }
             catch
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados.");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. GetId");
             }
         }
 
@@ -50,7 +50,7 @@ namespace API.Controllers
             }
             catch
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados.");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. PostId");
             }
             return BadRequest();
         }
@@ -72,7 +72,7 @@ namespace API.Controllers
             }
             catch
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados.");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. DeleteId");
             }
         }
 
@@ -86,6 +86,7 @@ namespace API.Controllers
                 {
                     return BadRequest();
                 }
+
                 result.username = usuario.username;
                 result.nome = usuario.nome;
                 result.nascimento = usuario.nascimento;
@@ -97,7 +98,7 @@ namespace API.Controllers
             }
             catch
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados.");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. UpdateId" + $"{username}");
             }
         }
     }

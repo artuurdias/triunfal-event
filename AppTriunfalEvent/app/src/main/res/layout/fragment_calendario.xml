@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/button_background"
+tools:context=".ui.calendario.CalendarioFragment">
+
+<CalendarView
+    android:id="@+id/calendarView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:background="@color/white"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
+
+<TextView
+    android:id="@+id/tvAgenda"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/black"
+    android:layout_marginTop="20dp"
+    android:text="Agenda em ..."
+    android:textAlignment="center"
+    android:fontFamily="cursive"
+    android:textSize="30dp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/calendarView"
+    />
+
+<ListView
+    android:id="@+id/lvAgenda"
+    android:layout_margin="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvAgenda"
+    />
+
+<TextView
+    android:id="@+id/tvLegenda"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    android:fontFamily="cursive"
+    android:textColor="@color/black"
+
+    android:text="Legenda"
+    android:textAlignment="center"
+    android:textSize="30dp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/lvAgenda" />
+
+<View
+    android:id="@+id/viewEvento"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_marginStart="50dp"
+    android:layout_marginTop="32dp"
+    android:background="@color/brow_dark"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvLegenda" />
+
+<TextView
+    android:id="@+id/tvEvento"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="44dp"
+    android:layout_marginTop="28dp"
+    android:textColor="@color/black"
+
+    android:fontFamily="cursive"
+    android:text="Eventos"
+    android:textAlignment="center"
+    android:textSize="25dp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toEndOf="@+id/viewEvento"
+    app:layout_constraintTop_toBottomOf="@id/tvLegenda" />
+
+
+<View
+    android:id="@+id/viewLembrete"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_marginStart="28dp"
+    android:layout_marginTop="32dp"
+    android:background="@color/grey"
+    app:layout_constraintStart_toEndOf="@id/tvEvento"
+    app:layout_constraintTop_toBottomOf="@+id/tvLegenda" />
+
+<TextView
+    android:id="@+id/tvLembrete"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/black"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="28dp"
+    android:fontFamily="cursive"
+    android:text="Lembretes"
+    android:textAlignment="center"
+    android:textSize="25dp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toEndOf="@+id/viewLembrete"
+    app:layout_constraintTop_toBottomOf="@id/tvLegenda" />
+
+<View
+    android:id="@+id/viewFeriado"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_marginStart="50dp"
+    android:layout_marginTop="32dp"
+    android:background="@color/black"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/viewEvento" />
+
+<TextView
+    android:id="@+id/tvFeriado"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/black"
+
+    android:layout_marginStart="40dp"
+    android:layout_marginTop="25dp"
+    android:fontFamily="cursive"
+    android:text="Feriados"
+    android:textAlignment="center"
+    android:textSize="25dp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toEndOf="@+id/viewFeriado"
+    app:layout_constraintTop_toBottomOf="@id/tvEvento" />
+
+<View
+    android:id="@+id/viewConvites"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_marginStart="28dp"
+    android:layout_marginTop="32dp"
+    android:background="@color/purple_500"
+    app:layout_constraintStart_toEndOf="@id/tvEvento"
+    app:layout_constraintTop_toBottomOf="@+id/tvEvento"/>
+
+<TextView
+    android:id="@+id/tvConvites"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="40dp"
+    android:textColor="@color/black"
+
+    android:layout_marginTop="25dp"
+    android:fontFamily="cursive"
+    android:text="Convites"
+    android:textAlignment="center"
+    android:textSize="25dp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toEndOf="@+id/viewConvites"
+    app:layout_constraintTop_toBottomOf="@id/tvEvento" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
