@@ -67,7 +67,7 @@ public class FormCadastro extends AppCompatActivity {
 
     private void incluirUsuario(Usuario user){
         Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
-        Call<Usuario> call = service.postUsuario(user.getUsername(), user);
+        Call<Usuario> call = service.postUsuario(user);
         call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response)
@@ -75,7 +75,9 @@ public class FormCadastro extends AppCompatActivity {
                 if(response.isSuccessful())
                 {
                     Usuario user = (Usuario) response.body();
-                    Toast.makeText(FormCadastro.this, user.toString(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(FormCadastro.this, user.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(FormCadastro.this, "Cadastro concluido com sucesso!", Toast.LENGTH_LONG).show();
+
                     intent = new Intent(FormCadastro.this, HomeActivity.class);
                     startActivity(intent);
                 }
@@ -99,7 +101,6 @@ public class FormCadastro extends AppCompatActivity {
                 String messageProblem = t.getMessage().toString();
                 Toast.makeText(FormCadastro.this, messageProblem, Toast.LENGTH_LONG).show();
                 Toast.makeText(FormCadastro.this, "Erro de conexão com API", Toast.LENGTH_LONG).show();
-
             }
         });
     }

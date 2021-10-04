@@ -20,8 +20,8 @@ public interface Service {
     @GET("api/usuario/{username}/")
     Call<Usuario> getUsuario(@Path("username") String username);
 
-    @POST("/api/usuario/{username}")
-    Call<Usuario> postUsuario(@Path("username") String username, @Body Usuario usuario);
+    @POST("/api/usuario/")
+    Call<Usuario> postUsuario(@Body Usuario usuario);
 
     @PUT("/api/usuario/{username}")
     Call<Usuario> alterarUser(@Path("username") String username, @Body Usuario usuario);
