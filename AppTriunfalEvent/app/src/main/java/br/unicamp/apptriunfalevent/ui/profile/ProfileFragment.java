@@ -52,19 +52,18 @@ public class ProfileFragment extends Fragment {
 
         inicializarComponents();
 
- /*       //Download JSON via Retrofit
-         Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
+       //Download JSON via Retrofit
+        Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
 
         //Pegar a rota do Json
-      Call<Usuario> call = service.getUsuario(tvUsername.getText().toString());
-
+        Call<Usuario> call = service.getUsuario(tvUsername.getText().toString());
 
          call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(getActivity(), "deu certo", Toast.LENGTH_LONG).show();
-                 edtNomeProfile.setText(response.body().getNome());
+                    edtNomeProfile.setText(response.body().getNome());
                     edtDataProfile.setText(response.body().getNascimento());
                     edtEmailProfile.setText(response.body().getEmail());
                     edtSenhaProfile.setText(response.body().getSenha());
@@ -79,7 +78,7 @@ public class ProfileFragment extends Fragment {
             public void onFailure(Call<Usuario> call, Throwable t) {
                 Toast.makeText(getActivity(), "Erro dois", Toast.LENGTH_SHORT).show();
             }
-        });*/
+        }); /**/
 
         tvLogoutProfile.setOnClickListener(new View.OnClickListener() {
             @Override

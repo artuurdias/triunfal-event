@@ -58,71 +58,54 @@ public class ConvitesFragment extends Fragment {
         });
         */
 
-
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://127.0.0.1:5000/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        getUser();
+        //getUser();
 
         return root;
     }
 
-    private void getUser(){
+    /*private void getUser(){
 
-        Service service = retrofit.create(Service.class);
+        Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
         Call<Usuario> call = service.getUsuario();
         call.enqueue(new Callback<Usuario>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(Call<Usuario> call, Response<Usuario> response)
+            {
                 Toast.makeText(getContext(), "SUCESSOO", Toast.LENGTH_LONG).show();
 
-                if(response.isSuccessful()){
+                if(response.isSuccessful())
+                {
 
                     Toast.makeText(getContext(), "BOAAAAA", Toast.LENGTH_LONG).show();
-
                     Usuario user = (Usuario) response.body();
-                    tvResposta.setText( user.getNome());
-                    //tvResposta.setText(user.getNome() + " - " + user.getEmail());
-                }
-               /* else
-                {
-                    String errorMessage = response.errorBody().toString();
-                    Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), user.toString(), Toast.LENGTH_LONG).show();
 
-                    Toast.makeText(getActivity(), "fudeu", Toast.LENGTH_LONG).show();
-                }*/
-               else {
-                try {
-                    JSONObject jObjError = new JSONObject(response.errorBody().string());
-                    Toast.makeText(getContext(), jObjError.getJSONObject("error").getString("message"), Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
-            }
+               else
+                   {
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        String erro = jObjError.getJSONObject("error").getString("message");
+                        Toast.makeText(getContext(), erro, Toast.LENGTH_LONG).show();
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
             }
 
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
                 String messageProblem = t.getMessage().toString();
-                //
-                //
                 Toast.makeText(getActivity(), messageProblem, Toast.LENGTH_LONG).show();
-                //tvResposta.setText("messageProblem");
-                Toast.makeText(getActivity(), "err", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Erro de conexão com API", Toast.LENGTH_LONG).show();
 
             }
         });
-
     }
-
-    private void populateGridView(List<Usuario> lista){
-        userGridView = (GridView) getActivity().findViewById(R.id.userGridView);
-        adapter = new GridViewAdapter(getContext(),lista);
-        userGridView.setAdapter(adapter);
-    }
+*/
 
     @Override
     public void onDestroyView() {

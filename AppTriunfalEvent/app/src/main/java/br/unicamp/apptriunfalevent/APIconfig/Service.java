@@ -17,13 +17,11 @@ public interface Service {
     @GET("/usuario")
     Call<List<Usuario>> getUsuarios();
 
-    @GET("api/usuario/Fabriciao/")
-    Call<Usuario> getUsuario();
+    @GET("api/usuario/{username}/")
+    Call<Usuario> getUsuario(@Path("username") String username);
 
-    @GET("01310100/json/")
-    Call<CEP> recuperarCEP();
-
-
+    @POST("/api/usuario/{username}")
+    Call<Usuario> postUsuario(@Path("username") String username, @Body Usuario usuario);
 
     @PUT("/api/usuario/{username}")
     Call<Usuario> alterarUser(@Path("username") String username, @Body Usuario usuario);

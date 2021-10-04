@@ -46,6 +46,8 @@ public class EventsFragment extends Fragment {
             }
         });*/
 
+
+
         return root;
     }
 

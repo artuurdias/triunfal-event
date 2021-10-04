@@ -1,12 +1,17 @@
 package br.unicamp.apptriunfalevent;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -51,6 +56,28 @@ public class HomeActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+
+       /**/
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                if(id == R.id.nav_calendario) {
+                    Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG);
+                } else if(id == R.id.nav_eventos) {
+                    Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG);
+                } else if(id == R.id.nav_homepage) {
+                    Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "nenhum", Toast.LENGTH_LONG);
+                }
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
     }
 
     @Override
