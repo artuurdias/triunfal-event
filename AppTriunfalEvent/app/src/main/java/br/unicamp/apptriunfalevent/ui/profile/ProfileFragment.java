@@ -9,20 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import br.unicamp.apptriunfalevent.APIconfig.Usuario;
-import br.unicamp.apptriunfalevent.R;
 import br.unicamp.apptriunfalevent.APIconfig.RetrofitConfig;
 import br.unicamp.apptriunfalevent.APIconfig.Service;
 import android.content.Intent;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
+import br.unicamp.apptriunfalevent.Models.Usuario;
 import br.unicamp.apptriunfalevent.WelcomeActivity;
 import br.unicamp.apptriunfalevent.databinding.FragmentProfileBinding;
+import br.unicamp.apptriunfalevent.ui.profile.ProfileViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -115,7 +112,7 @@ public class ProfileFragment extends Fragment {
         Usuario usuario = new Usuario(strId, strNome, strData, strEmail, strSenha);
         Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
 
-        Call<Usuario> call = service.alterarUser(strId,usuario);
+        Call<Usuario> call = service.putUsuario(strId,usuario);
 
         call.enqueue(new Callback<Usuario>() {
             @Override

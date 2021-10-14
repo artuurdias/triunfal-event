@@ -3,7 +3,6 @@ package br.unicamp.apptriunfalevent.Forms;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +14,8 @@ import org.json.JSONObject;
 
 import br.unicamp.apptriunfalevent.APIconfig.RetrofitConfig;
 import br.unicamp.apptriunfalevent.APIconfig.Service;
-import br.unicamp.apptriunfalevent.APIconfig.Usuario;
 import br.unicamp.apptriunfalevent.HomeActivity;
+import br.unicamp.apptriunfalevent.Models.Usuario;
 import br.unicamp.apptriunfalevent.R;
 import br.unicamp.apptriunfalevent.WelcomeActivity;
 import retrofit2.Call;

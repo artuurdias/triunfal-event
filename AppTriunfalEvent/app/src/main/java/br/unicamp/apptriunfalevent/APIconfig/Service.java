@@ -2,6 +2,12 @@ package br.unicamp.apptriunfalevent.APIconfig;
 
 import java.util.List;
 
+import br.unicamp.apptriunfalevent.Models.Convidado;
+import br.unicamp.apptriunfalevent.Models.Dica;
+import br.unicamp.apptriunfalevent.Models.Evento;
+import br.unicamp.apptriunfalevent.Models.Feriado;
+import br.unicamp.apptriunfalevent.Models.Lembrete;
+import br.unicamp.apptriunfalevent.Models.Usuario;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -12,7 +18,7 @@ import retrofit2.http.Path;
 
 public interface Service {
 
-   /******************* CRUD USUARIOS *******************/
+    /******************* CRUD USUARIOS *******************/
     @GET("/usuario")
     Call<List<Usuario>> getUsuarios();
 

@@ -10,12 +10,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.json.JSONObject;
 
 import br.unicamp.apptriunfalevent.APIconfig.RetrofitConfig;
 import br.unicamp.apptriunfalevent.APIconfig.Service;
-import br.unicamp.apptriunfalevent.APIconfig.Usuario;
 import br.unicamp.apptriunfalevent.HomeActivity;
+import br.unicamp.apptriunfalevent.Models.Usuario;
 import br.unicamp.apptriunfalevent.R;
 import br.unicamp.apptriunfalevent.WelcomeActivity;
 import retrofit2.Call;
@@ -27,7 +29,8 @@ public class FormCadastro extends AppCompatActivity {
 
     Button btnCadastrar_cadastro;
     TextView tvLogin_cadastro;
-    EditText edtUsername_cadastro, edtEmail_cadastro, edtNome_cadastro, edtData_cadastro, edtPassworld_cadastro;
+    EditText edtUsername_cadastro, edtEmail_cadastro,
+            edtNome_cadastro, edtData_cadastro, edtPassworld_cadastro;
     Intent intent;
 
     @Override
@@ -75,9 +78,7 @@ public class FormCadastro extends AppCompatActivity {
                 if(response.isSuccessful())
                 {
                     Usuario user = (Usuario) response.body();
-                    //Toast.makeText(FormCadastro.this, user.toString(), Toast.LENGTH_LONG).show();
-                    Toast.makeText(FormCadastro.this, "Cadastro concluido com sucesso!", Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(FormCadastro.this, user.toString(), Toast.LENGTH_LONG).show();
                     intent = new Intent(FormCadastro.this, HomeActivity.class);
                     startActivity(intent);
                 }
@@ -85,9 +86,9 @@ public class FormCadastro extends AppCompatActivity {
                 {
                     try
                     {
-                        JSONObject jObjError = new JSONObject(response.errorBody().string());
-                        String erro = jObjError.getJSONObject("error").getString("message");
-                        Toast.makeText(FormCadastro.this, erro, Toast.LENGTH_LONG).show();
+                        //JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        //String erro = jObjError.getJSONObject("error").getString("message");
+                        Toast.makeText(FormCadastro.this, "Username já existente! Por favor, digite outro.", Toast.LENGTH_LONG).show();
                     }
                     catch (Exception e)
                     {
@@ -108,7 +109,7 @@ public class FormCadastro extends AppCompatActivity {
 
     private void inicializarComponentes()
     {
-        edtUsername_cadastro = (EditText) findViewById(R.id.edtUsername_login);
+        edtUsername_cadastro = (EditText) findViewById(R.id.edtUsername_cadastro);
         edtEmail_cadastro = (EditText) findViewById(R.id.edtEmail_cadastro);
         edtNome_cadastro = (EditText) findViewById(R.id.edtNome_cadastro);
         edtData_cadastro = (EditText) findViewById(R.id.edtData_cadastro);

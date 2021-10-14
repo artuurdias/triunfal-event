@@ -57,27 +57,6 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
-
-       /**/
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                int id = menuItem.getItemId();
-                if(id == R.id.nav_calendario) {
-                    Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG);
-                } else if(id == R.id.nav_eventos) {
-                    Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG);
-                } else if(id == R.id.nav_homepage) {
-                    Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG);
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "nenhum", Toast.LENGTH_LONG);
-                }
-                drawer.closeDrawer(GravityCompat.START);
-                return true;
-            }
-        });
     }
 
     @Override
