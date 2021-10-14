@@ -37,13 +37,13 @@ public interface Service {
     Call<Evento> getEvento(@Path("id") String id);
 
     @POST("/api/evento/")
-    Call<Usuario> postEvento(@Body Evento event);
+    Call<Evento> postEvento(@Body Evento event);
 
     @PUT("/api/evento/{id}")
-    Call<Usuario> putEvento(@Path("id") String id, @Body Evento event);
+    Call<Evento> putEvento(@Path("id") String id, @Body Evento event);
 
     @DELETE("/api/evento/{id}")
-    Call<Usuario> deleteEvento(@Path("id") String id);
+    Call<Evento> deleteEvento(@Path("id") String id);
 
 
     /******************* CRUD CONVIDADOS *******************/
@@ -102,14 +102,14 @@ public interface Service {
     Call<List<Feriado>> getFeriados();
 
     @GET("api/feriado/{id}")
-    Call<Dica> getFeriado(@Path("id") String id);
+    Call<Feriado> getFeriado(@Path("id") String id);
 
     @POST("/api/feriado/")
-    Call<Dica> postFeriado(@Body Dica feriado);
+    Call<Feriado> postFeriado(@Body Feriado feriado);
 
     @PUT("/api/feriado/{id}")
-    Call<Dica> putFeriado(@Path("id") String id, @Body Dica feriado);
+    Call<Feriado> putFeriado(@Path("id") String id, @Body Feriado feriado);
 
     @DELETE("/api/feriado/{id}")
-    Call<Dica> deleteFeriado(@Path("id") String id);
+    Call<Feriado> deleteFeriado(@Path("id") String id);
 }
