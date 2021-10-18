@@ -1,5 +1,6 @@
 package br.unicamp.apptriunfalevent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.Menu;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import br.unicamp.apptriunfalevent.databinding.ActivityHomeBinding;
+import br.unicamp.apptriunfalevent.ui.home.*;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -34,14 +37,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarHome.toolbar);
-
-        /*binding.appBarHome.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
 
         DrawerLayout drawer = binding.drawerLayout;
@@ -58,6 +53,8 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

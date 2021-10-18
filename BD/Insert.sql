@@ -95,3 +95,11 @@ delete from Dica where id >= 0
 DBCC CHECKIDENT(Dica, RESEED, 0)
 
 /**********************************************************************************************************************/
+
+insert into Convite values('02/04', 'Você está convidado!',	'JDN764', 'Fabriciao');
+insert into Convite values('02/04', 'Você está convidado!',	'JDN764', 'Arturzao');
+
+
+select * from Convite
+delete from Convite where id >= 0
+DBCC CHECKIDENT(Convite, RESEED, 0)

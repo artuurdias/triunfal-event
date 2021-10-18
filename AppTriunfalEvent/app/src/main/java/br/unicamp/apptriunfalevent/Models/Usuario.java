@@ -1,5 +1,8 @@
 package br.unicamp.apptriunfalevent.Models;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 public class Usuario {
     private String username, nome, nascimento, email, senha;
 
@@ -10,6 +13,8 @@ public class Usuario {
         this.email = email;
         this.senha = senha;
     }
+
+
 
     public String getUsername() {
         return username;
@@ -61,4 +66,5 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 }

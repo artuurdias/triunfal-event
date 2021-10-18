@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.unicamp.apptriunfalevent.APIconfig.Session;
 import br.unicamp.apptriunfalevent.Models.Usuario;
 import br.unicamp.apptriunfalevent.WelcomeActivity;
 import br.unicamp.apptriunfalevent.databinding.FragmentProfileBinding;
@@ -39,6 +40,8 @@ public class ProfileFragment extends Fragment {
     private EditText edtDataProfile, edtSenhaProfile, edtEmailProfile, edtNomeProfile ;
     private TextView tvLogoutProfile, tvUsername;
     private Button btnAtualizarProfile;
+    private Session session;//global variable
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -49,17 +52,24 @@ public class ProfileFragment extends Fragment {
 
         inicializarComponents();
 
+
        //Download JSON via Retrofit
         Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
 
+        session = new Session(getContext()); //in oncreate
+        //and now we set sharedpreference then use this like
+
+        String username = session.getusename();
+
         //Pegar a rota do Json
-        Call<Usuario> call = service.getUsuario(tvUsername.getText().toString());
+        Call<Usuario> call = service.getUsuario(username);
 
          call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(getActivity(), "deu certo", Toast.LENGTH_LONG).show();
+                    tvUsername.setText(response.body().getUsername());
                     edtNomeProfile.setText(response.body().getNome());
                     edtDataProfile.setText(response.body().getNascimento());
                     edtEmailProfile.setText(response.body().getEmail());
@@ -93,6 +103,8 @@ public class ProfileFragment extends Fragment {
         });
         return root;
     }
+
+
 
     @Override
     public void onDestroyView() {
@@ -144,7 +156,6 @@ public class ProfileFragment extends Fragment {
         edtNomeProfile = binding.edtNomeProfile;
         edtSenhaProfile = binding.edtSenhaProfile;
         tvUsername = binding.tvUsername;
-
     }
 
 

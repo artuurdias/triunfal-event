@@ -12,6 +12,7 @@ import android.widget.Toast;
 import java.io.Serializable;
 import java.util.List;
 
+import br.unicamp.apptriunfalevent.Models.Evento;
 import br.unicamp.apptriunfalevent.Models.Usuario;
 import br.unicamp.apptriunfalevent.R;
 
@@ -19,10 +20,10 @@ import br.unicamp.apptriunfalevent.ui.profile.ProfileFragment;
 
 public class GridViewAdapter extends BaseAdapter {
 
-    private List<Usuario> lista;
+    private List<Evento> lista;
     private Context context;
 
-    public GridViewAdapter(Context context, List<Usuario> recebeParametroListaDog){
+    public GridViewAdapter(Context context, List<Evento> recebeParametroListaDog){
         this.lista = recebeParametroListaDog;
         this.context = context;
     }
@@ -49,13 +50,13 @@ public class GridViewAdapter extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.layoute_gridview, parent,false);
         }
 
-        TextView tvNome = view.findViewById(R.id.tvNome_grid);
-        TextView tvRaca = view.findViewById(R.id.tvRaca_grid);
+        TextView tvEventoNome = view.findViewById(R.id.tvEventoNome_grid);
+        TextView tvEventoData = view.findViewById(R.id.tvEventoData_grid);
 
-        Usuario user = lista.get(position);
+        Evento evento = lista.get(position);
 
-        tvNome.setText(user.getNome());
-        tvRaca.setText(user.getEmail());
+        tvEventoNome.setText(evento.getNome());
+        tvEventoData.setText(evento.getData());
 
        /* if((dog.getImagem() != null) && (dog.getImagem().length()>0)){
             Picasso.get().load(dog.getImagem()).into(dogImageView);
@@ -67,15 +68,14 @@ public class GridViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(context, user.getNome(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, evento.getNome(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, evento.getData(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, evento.getLocal(), Toast.LENGTH_LONG).show();
 
-                Usuario usuario = new Usuario(user.getUsername(), user.getNome(), user.getNascimento(),
-                        user.getEmail(), user.getSenha());
 
-                Intent intent = new Intent(context, ProfileFragment.class);
-                intent.putExtra("userSerializable",(Serializable) usuario);
-                context.startActivity(intent);
-
+               /* Intent intent = new Intent(context, ProfileFragment.class);
+                intent.putExtra("eventoSerializable",(Serializable) evento);
+                context.startActivity(intent);*/
             }
         });
         return view;

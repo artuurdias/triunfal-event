@@ -3,6 +3,7 @@ package br.unicamp.apptriunfalevent.APIconfig;
 import java.util.List;
 
 import br.unicamp.apptriunfalevent.Models.Convidado;
+import br.unicamp.apptriunfalevent.Models.Convite;
 import br.unicamp.apptriunfalevent.Models.Dica;
 import br.unicamp.apptriunfalevent.Models.Evento;
 import br.unicamp.apptriunfalevent.Models.Feriado;
@@ -36,13 +37,13 @@ public interface Service {
 
 
     /******************* CRUD EVENTOS *******************/
-    @GET("/evento")
+    @GET("/api/evento")
     Call<List<Evento>> getEventos();
 
     @GET("api/evento/{id}")
     Call<Evento> getEvento(@Path("id") String id);
 
-    @POST("/api/evento/")
+    @POST("/api/evento")
     Call<Evento> postEvento(@Body Evento event);
 
     @PUT("/api/evento/{id}")
@@ -56,10 +57,10 @@ public interface Service {
     @GET("/convidado")
     Call<List<Convidado>> getConvidados();
 
-    @GET("api/convidado/{idConvidado}")
+    @GET("/api/convidado/{idConvidado}")
     Call<Convidado> getConvidado(@Path("idConvidado") String id);
 
-    @POST("/api/convidado/")
+    @POST("/api/convidado")
     Call<Convidado> postConvidado(@Body Convidado convidado);
 
     @PUT("/api/convidado/{idConvidado}")
@@ -73,10 +74,10 @@ public interface Service {
     @GET("/lembrete")
     Call<List<Lembrete>> getLembretes();
 
-    @GET("api/convidado/{id}")
+    @GET("/api/convidado/{id}")
     Call<Lembrete> getLembrete(@Path("id") String id);
 
-    @POST("/api/convidado/")
+    @POST("/api/convidado")
     Call<Lembrete> postLembrete(@Body Lembrete lembrete);
 
     @PUT("/api/convidado/{id}")
@@ -90,7 +91,7 @@ public interface Service {
     @GET("/dica")
     Call<List<Dica>> getDicas();
 
-    @GET("api/dica/{id}")
+    @GET("/api/dica/{id}")
     Call<Dica> getDica(@Path("id") String id);
 
     @POST("/api/dica/")
@@ -107,7 +108,7 @@ public interface Service {
     @GET("/feriado")
     Call<List<Feriado>> getFeriados();
 
-    @GET("api/feriado/{id}")
+    @GET("/api/feriado/{id}")
     Call<Feriado> getFeriado(@Path("id") String id);
 
     @POST("/api/feriado/")
@@ -118,4 +119,20 @@ public interface Service {
 
     @DELETE("/api/feriado/{id}")
     Call<Feriado> deleteFeriado(@Path("id") String id);
+
+    /******************* CRUD CONVITES *******************/
+    @GET("api/convite")
+    Call<List<Convite>> getConvites();
+
+    @GET("/api/convite/{id}")
+    Call<Convite> getConvite(@Path("id") String id);
+
+    @POST("/api/convite/")
+    Call<Convite> postConvite(@Body Convite convite);
+
+    @PUT("/api/convite/{id}")
+    Call<Convite> putConvite(@Path("id") String id, @Body Convite convite);
+
+    @DELETE("/api/convite/{id}")
+    Call<Convite> deleteConvites(@Path("id") String id);
 }

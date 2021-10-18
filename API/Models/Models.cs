@@ -61,4 +61,14 @@ namespace API.Models
         public string nome { get; set; }
         public string data { get; set; }
     }
+
+    public class Convite
+    {
+        [Key]
+        public int      id          { get; set; }
+        public string   data        { get; set; }
+        public string   mensagem    { get; set; }
+        public string   idEvento    { get; set; }
+        public string   nomeUsuario { get; set; }
+    }
 }

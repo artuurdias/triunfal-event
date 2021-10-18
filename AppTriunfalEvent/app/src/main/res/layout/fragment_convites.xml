@@ -11,12 +11,12 @@
 
 
     <TextView
-        android:id="@+id/tvLembrete"
+        android:id="@+id/tvConvites_convite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:fontFamily="cursive"
         android:text="Convites"
-        android:layout_margin="20dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="50dp"
@@ -25,39 +25,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/containerComponents"
-        style="@style/ContainerComponents"
-        android:layout_height="490dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLembrete" />
-
-    <GridView
-        android:id="@+id/userGridView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerConvites_convite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toTopOf="@+id/containerComponents" >
+        android:layout_margin="20dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvConvites_convite" />
 
-    </GridView>
 
     <ImageView
-        android:id="@+id/imvEventos"
+        android:id="@+id/imvLogo_convite"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="20dp"
         android:src="@drawable/icone_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/containerComponents" />
+        tools:layout_editor_absoluteY="612dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fbHome_convite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
@@ -69,15 +58,7 @@
         app:srcCompat="@drawable/ic_baseline_home_24"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/tvResposta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toTopOf="@+id/containerComponents" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

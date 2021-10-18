@@ -15,5 +15,6 @@ namespace API.Data
         public DbSet<Dica> Dica { get; set; }
         public DbSet<Lembrete> Lembrete { get; set; }
         public DbSet<Feriado> Feriado { get; set; }
+        public DbSet<Convite> Convite { get; set; }
     }
 }

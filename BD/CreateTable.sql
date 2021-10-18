@@ -59,6 +59,16 @@ create table Dica (
 	foreign key (tipoEvento)    references TipoEvento(nome),
 )
 
+create table Convite (
+	id int identity(1,1) primary key,
+	data varchar(10) not null,
+	mensagem varchar(100) null, 
+	idEvento char(6) not null,
+	nomeUsuario varchar(25) not null,
+	foreign key (idEvento)    references Evento(id),
+	foreign key (nomeUsuario) references Usuario(username)
+)
+
 drop table Usuario
 drop table TipoEvento
 drop table Evento
@@ -66,6 +76,8 @@ drop table Convidado
 drop table Lembrete
 drop table Feriado
 drop table Dica
+drop table Convite
+
 
 /*
 	Adicionei usuario no lembrete

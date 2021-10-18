@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import br.unicamp.apptriunfalevent.APIconfig.RetrofitConfig;
 import br.unicamp.apptriunfalevent.APIconfig.Service;
+import br.unicamp.apptriunfalevent.APIconfig.Session;
 import br.unicamp.apptriunfalevent.HomeActivity;
 import br.unicamp.apptriunfalevent.Models.Usuario;
 import br.unicamp.apptriunfalevent.R;
@@ -28,6 +29,7 @@ public class FormLogin extends AppCompatActivity {
     EditText edtUsername_login, edtSenha_login;
     TextView tvCadastro_login;
     Intent intent;
+    private Session session;//global variable
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,13 @@ public class FormLogin extends AppCompatActivity {
         });
     }
 
+    private void setUserSession(Usuario user){
+
+        session = new Session(this); //in oncreate
+        //and now we set sharedpreference then use this like
+        session.setusename(user.getUsername());
+    }
+
     private void getUser(String username, String senha){
 
 
@@ -74,6 +83,7 @@ public class FormLogin extends AppCompatActivity {
                         {
                             if(user.getSenha().equals(senha))
                             {
+                                setUserSession(user);
                                 intent = new Intent(FormLogin.this, HomeActivity.class);
                                 startActivity(intent);
                             }
@@ -88,9 +98,6 @@ public class FormLogin extends AppCompatActivity {
                             Toast.makeText(FormLogin.this, "Usuario inexistente!", Toast.LENGTH_LONG).show();
 
                         }
-
-
-
                     }
                     else
                     {

@@ -1,10 +1,13 @@
 package br.unicamp.apptriunfalevent.ui.convites;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +21,13 @@ import org.json.JSONObject;
 import java.util.List;
 
 import br.unicamp.apptriunfalevent.APIconfig.*;
+import br.unicamp.apptriunfalevent.HomeActivity;
 import br.unicamp.apptriunfalevent.R;
 import br.unicamp.apptriunfalevent.databinding.FragmentConvitesBinding;
 import br.unicamp.apptriunfalevent.databinding.*;
 import br.unicamp.apptriunfalevent.ui.event.*;
+import br.unicamp.apptriunfalevent.ui.home.*;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,6 +43,7 @@ public class ConvitesFragment extends Fragment {
     private GridViewAdapter adapter;
     private Retrofit retrofit;
     private TextView tvResposta;
+    private RecyclerView recyclerViewConvites;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -45,67 +52,29 @@ public class ConvitesFragment extends Fragment {
         binding = FragmentConvitesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        tvResposta = (TextView) getActivity().findViewById(R.id.tvResposta);
+        tvResposta = (TextView) getActivity().findViewById(R.id.tvConvites_convite);
 
-        /*
-        final Button btnLogoutProfile = binding.btnLogoutProfile;
-        btnLogoutProfile.setOnClickListener(new View.OnClickListener() {
+        binding.fbHomeConvite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), WelcomeActivity.class);
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
                 startActivity(intent);
             }
         });
-        */
 
-        //getUser();
+        // recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // adaptador = new MeuAdaptador(list);
+        // recyclerView.setAdapter(adaptador);
+        // recyclerViewConvites = getActivity().findViewById(R.id.recyclerConvites_convite);
+        // recyclerViewConvites.setLayoutManager(new LinearLayoutManager(get()));
+        // recyclerViewConvites.setHasFixedSize(true);
 
+/*
+        AdapterConvites adapter = new AdapterConvites();
+        recyclerViewConvites.setAdapter(adapter);
+ */
         return root;
     }
-
-    /*private void getUser(){
-
-        Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
-        Call<Usuario> call = service.getUsuario();
-        call.enqueue(new Callback<Usuario>() {
-            @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response)
-            {
-                Toast.makeText(getContext(), "SUCESSOO", Toast.LENGTH_LONG).show();
-
-                if(response.isSuccessful())
-                {
-
-                    Toast.makeText(getContext(), "BOAAAAA", Toast.LENGTH_LONG).show();
-                    Usuario user = (Usuario) response.body();
-                    Toast.makeText(getActivity(), user.toString(), Toast.LENGTH_LONG).show();
-
-                }
-               else
-                   {
-                    try
-                    {
-                        JSONObject jObjError = new JSONObject(response.errorBody().string());
-                        String erro = jObjError.getJSONObject("error").getString("message");
-                        Toast.makeText(getContext(), erro, Toast.LENGTH_LONG).show();
-                    }
-                    catch (Exception e)
-                    {
-                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                String messageProblem = t.getMessage().toString();
-                Toast.makeText(getActivity(), messageProblem, Toast.LENGTH_LONG).show();
-                Toast.makeText(getActivity(), "Erro de conexão com API", Toast.LENGTH_LONG).show();
-
-            }
-        });
-    }
-*/
 
     @Override
     public void onDestroyView() {
