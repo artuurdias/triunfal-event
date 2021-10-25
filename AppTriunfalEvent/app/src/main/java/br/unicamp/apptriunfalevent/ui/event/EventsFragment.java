@@ -1,6 +1,5 @@
 package br.unicamp.apptriunfalevent.ui.event;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,21 +9,16 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import java.util.List;
 
-import br.unicamp.apptriunfalevent.APIconfig.GridViewAdapter;
 import br.unicamp.apptriunfalevent.APIconfig.RetrofitConfig;
 import br.unicamp.apptriunfalevent.APIconfig.Service;
 import br.unicamp.apptriunfalevent.Models.Evento;
 import br.unicamp.apptriunfalevent.R;
-import br.unicamp.apptriunfalevent.WelcomeActivity;
 import br.unicamp.apptriunfalevent.databinding.FragmentEventsBinding;
-import br.unicamp.apptriunfalevent.databinding.FragmentProfileBinding;
-import br.unicamp.apptriunfalevent.ui.profile.ProfileViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,7 +34,7 @@ public class EventsFragment extends Fragment {
     private GridView eventsGridView;
     private EventsVielModel homeViewModel;
     private FragmentEventsBinding binding;
-    private GridViewAdapter adapter;
+    private AdapterEvents adapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,14 +44,6 @@ public class EventsFragment extends Fragment {
         binding = FragmentEventsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        /*final Button btnLogoutProfile = binding.btnLogoutProfile;
-        btnLogoutProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), WelcomeActivity.class);
-                startActivity(intent);
-            }
-        });*/
 
         //Download JSON via Retrofit
         Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
@@ -99,7 +85,7 @@ public class EventsFragment extends Fragment {
 
     private void populateGridView(List<Evento> listaDog){
         eventsGridView = (GridView) getView().findViewById(R.id.gridEvents);
-        adapter = new GridViewAdapter(getContext(), listaDog);
+        adapter = new AdapterEvents(getContext(), getActivity(), listaDog);
         eventsGridView.setAdapter(adapter);
     }
 

@@ -1,20 +1,11 @@
 package br.unicamp.apptriunfalevent.Models;
 
 public class Convidado {
-    private String idConvidado, nomeUsuario, idEvento;
+    private String  idEvento, nomeUsuario;
 
-    public Convidado(String idConvidado, String nomeUsuario, String idEvento) {
-        this.idConvidado = idConvidado;
-        this.nomeUsuario = nomeUsuario;
+    public Convidado(String nomeUsuario, String idEvento) {
         this.idEvento = idEvento;
-    }
-
-    public String getIdConvidado() {
-        return idConvidado;
-    }
-
-    public void setIdConvidado(String idConvidado) {
-        this.idConvidado = idConvidado;
+        this.nomeUsuario = nomeUsuario;
     }
 
     public String getNomeUsuario() {

@@ -52,7 +52,6 @@ public class ProfileFragment extends Fragment {
 
         inicializarComponents();
 
-
        //Download JSON via Retrofit
         Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
 

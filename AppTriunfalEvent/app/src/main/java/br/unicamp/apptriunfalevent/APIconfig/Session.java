@@ -18,7 +18,7 @@ public class Session {
     }
 
     public String getusename() {
-        String usename = prefs.getString("usename","");
-        return usename;
+        return prefs.getString("usename","");
     }
+
 }

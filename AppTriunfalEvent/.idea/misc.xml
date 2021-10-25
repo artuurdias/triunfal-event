@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/drawable/background_header.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/drawable/customborder.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_main.xml" value="0.1625" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/adapter_convite.xml" value="0.22" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/adapter_events.xml" value="0.2" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/dialog_event.xml" value="0.25" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_convites.xml" value="0.1625" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_events.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_home.xml" value="0.2115036231884058" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/layoute_gridview.xml" value="0.2115036231884058" />
         <entry key="..\:/Users/aluno/Music/Tecnico/Pratica Prof/AppTriunfalEvent/app/src/main/res/drawable/background.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/aluno/Music/Tecnico/Pratica Prof/AppTriunfalEvent/app/src/main/res/drawable/background_header.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/aluno/Music/Tecnico/Pratica Prof/AppTriunfalEvent/app/src/main/res/drawable/button_background.xml" value="0.2846153846153846" />

@@ -37,7 +37,7 @@ namespace API.Controllers
 
                 int cont=0;
 
-                for (int i=0; i<convidados.Length; i++) {
+                for (int i=0; i < convidados.Length; i++) {
                     if (convidados[i].idEvento == idEvento) {
                         lista[i] = convidados[i];
                         cont++;
@@ -48,7 +48,7 @@ namespace API.Controllers
 
                 Convidado[] todos = new Convidado[cont];
 
-                for (int i=0; i<cont; i++) {
+                for (int i=0; i < cont; i++) {
                     todos[i] = lista[i];
                 }
 
@@ -59,6 +59,33 @@ namespace API.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. ");
             }
         }
+
+        [HttpGet("{idEvento}/{username}")]
+        public ActionResult<Convidado> GetByIdUsername(string idEvento, string username)
+        {
+            try
+            {
+                var convidados = _context.Convidado.ToArray();
+                Convidado[] lista = new Convidado[convidados.Length];
+                WriteLine($"Length: {convidados.Length}");
+
+                
+                for (int i=0; i < convidados.Length; i++) {
+                    if (convidados[i].idEvento == idEvento && convidados[i].nomeUsuario == username) {     
+                        WriteLine($"Convidado: {convidados[i].nomeUsuario} --- Evento: {convidados[i].idEvento}");
+                        return convidados[i];      
+                    }
+                }    
+                
+                return _context.Convidado.Find(-1);
+                    
+            }
+            catch
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. ");
+            }
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> PostConvidado(Convidado convidado)

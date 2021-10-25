@@ -62,12 +62,10 @@ public class FormLogin extends AppCompatActivity {
         session = new Session(this); //in oncreate
         //and now we set sharedpreference then use this like
         session.setusename(user.getUsername());
+
     }
 
     private void getUser(String username, String senha){
-
-
-
         try {
             Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
             Call<Usuario> call = service.getUsuario(username);

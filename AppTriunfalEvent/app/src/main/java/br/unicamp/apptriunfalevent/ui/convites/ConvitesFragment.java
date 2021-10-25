@@ -22,6 +22,8 @@ import java.util.List;
 
 import br.unicamp.apptriunfalevent.APIconfig.*;
 import br.unicamp.apptriunfalevent.HomeActivity;
+import br.unicamp.apptriunfalevent.Models.Convite;
+import br.unicamp.apptriunfalevent.Models.Evento;
 import br.unicamp.apptriunfalevent.R;
 import br.unicamp.apptriunfalevent.databinding.FragmentConvitesBinding;
 import br.unicamp.apptriunfalevent.databinding.*;
@@ -39,11 +41,9 @@ public class ConvitesFragment extends Fragment {
 
     private ConvitesVielModel homeViewModel;
     private FragmentConvitesBinding binding;
-    private GridView userGridView;
-    private GridViewAdapter adapter;
-    private Retrofit retrofit;
-    private TextView tvResposta;
-    private RecyclerView recyclerViewConvites;
+    private GridView conviteGridView;
+    private AdapterConvites adapter;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -51,8 +51,6 @@ public class ConvitesFragment extends Fragment {
 
         binding = FragmentConvitesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        tvResposta = (TextView) getActivity().findViewById(R.id.tvConvites_convite);
 
         binding.fbHomeConvite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,17 +60,37 @@ public class ConvitesFragment extends Fragment {
             }
         });
 
-        // recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        // adaptador = new MeuAdaptador(list);
-        // recyclerView.setAdapter(adaptador);
-        // recyclerViewConvites = getActivity().findViewById(R.id.recyclerConvites_convite);
-        // recyclerViewConvites.setLayoutManager(new LinearLayoutManager(get()));
-        // recyclerViewConvites.setHasFixedSize(true);
 
-/*
-        AdapterConvites adapter = new AdapterConvites();
-        recyclerViewConvites.setAdapter(adapter);
- */
+        //Download JSON via Retrofit
+        Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
+
+        //Pegar a rota do Json
+        Call<List<Convite>> call = service.getConvites();
+        call.enqueue(new Callback<List<Convite>>() {
+            @Override
+            public void onResponse(Call<List<Convite>> call, Response<List<Convite>> response) {
+
+                if(response.isSuccessful()){
+
+                    List<Convite> listConvite = response.body();
+                    Toast.makeText(getContext(), listConvite.get(0).getNomeUsuario(), Toast.LENGTH_LONG).show();
+                    populateGridView(listConvite);
+                }else{
+                    String errorMessage = response.errorBody().toString();
+                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "entrou no else do response", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Convite>> call, Throwable t) {
+                String messageProblem = t.getMessage().toString();
+                Toast.makeText(getContext(), messageProblem, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "entrou no else do Failure", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
         return root;
     }
 
@@ -80,6 +98,12 @@ public class ConvitesFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void populateGridView(List<Convite> lista){
+        conviteGridView = (GridView) getView().findViewById(R.id.gridConvites);
+        adapter = new AdapterConvites(getContext(), getActivity(), lista);
+        conviteGridView.setAdapter(adapter);
     }
 
 }

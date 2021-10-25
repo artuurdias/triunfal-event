@@ -54,13 +54,13 @@ public interface Service {
 
 
     /******************* CRUD CONVIDADOS *******************/
-    @GET("/convidado")
+    @GET("/api/convidado")
     Call<List<Convidado>> getConvidados();
 
     @GET("/api/convidado/{idConvidado}")
     Call<Convidado> getConvidado(@Path("idConvidado") String id);
 
-    @POST("/api/convidado")
+    @POST("/api/convidado/")
     Call<Convidado> postConvidado(@Body Convidado convidado);
 
     @PUT("/api/convidado/{idConvidado}")

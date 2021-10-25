@@ -33,7 +33,7 @@ insert into TipoEvento values('Evento esportivo', 'Evento esportivo é tudo aquil
 com o objetivo de promover uma competição esportiva.', 
 'Campeonato; Olimpíada; Copa; Gincana; Desafio; Esporte; Webinário; Ginástica;')
 
-select * from TipoEvento
+select nome from TipoEvento where exemplos 
 DBCC CHECKIDENT(TipoEvento, RESEED, 0)
 delete from TipoEvento where id >= 0
 
@@ -42,7 +42,10 @@ delete from TipoEvento where id >= 0
 insert into Evento values('JDN764', 'Churrascão do Fabio', 'Evento social', '23/09/2021', 'Churrascaria O Matuto', 'Fabiao')
 insert into Evento values('298GCV', 'PD Party 2022', 'Evento social', '12/04/2021', 'Chácara Belo Horizonte', 'Fabriciao')
 insert into Evento values('DCGFR4', 'Gincana COTUCA', 'Evento esportivo', '18/12/2021', 'Colégio Técnico de Campinas', 'Arturzao')
+insert into Evento values('HDBNWU', 'Formatura 2021', 'Evento social', '15/12/2021', 'COTUCA', 'Fabriciao')
+
 select * from Evento
+
 delete from Evento where id  <> ' ';
 
 /**********************************************************************************************************************/
