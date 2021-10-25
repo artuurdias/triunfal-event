@@ -55,7 +55,7 @@ insert into Convidado values('298GCV', 'Arturzao')
 
 select * from Convidado
 delete from Convidado where idConvidado >= 0
-DBCC CHECKIDENT(Convidado, RESEED, 0)
+
 
 /**********************************************************************************************************************/
 

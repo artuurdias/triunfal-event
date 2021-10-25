@@ -65,6 +65,10 @@ namespace API.Controllers
         {
             try
             {
+                /*var convidado = _context.Convidado.Find(idEvento, username);
+                WriteLine($"Convidado: {convidado.nomeUsuario} --- Evento: {convidado.idEvento}");
+                return convidado;      */
+
                 var convidados = _context.Convidado.ToArray();
                 Convidado[] lista = new Convidado[convidados.Length];
                 WriteLine($"Length: {convidados.Length}");
@@ -95,7 +99,7 @@ namespace API.Controllers
                 _context.Convidado.Add(convidado);
 
                 if (await _context.SaveChangesAsync() == 1)
-                    return Created($"/api/convidado/{convidado.idConvidado}", convidado);
+                    return Created($"/api/convidado/{convidado.idEvento}/{convidado.nomeUsuario}", convidado);
             }
             catch
             {
@@ -104,18 +108,26 @@ namespace API.Controllers
             return BadRequest();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        [HttpDelete("{idEvento}/{username}")]
+        public async Task<ActionResult> Delete(string idEvento, string username)
         {
             try
-            {
-                var convidado = await _context.Convidado.FindAsync(id);
+            { 
 
-                if (convidado == null)
-                    return NotFound();
+                
+                var convidados = _context.Convidado.ToArray();
+                Convidado[] lista = new Convidado[convidados.Length];
+                WriteLine($"Length: {convidados.Length}");
 
-                _context.Remove(convidado);
-                await _context.SaveChangesAsync();
+                
+                for (int i=0; i < convidados.Length; i++) {
+                    if (convidados[i].idEvento == idEvento && convidados[i].nomeUsuario == username) {     
+                        WriteLine($"Convidado: {convidados[i].nomeUsuario} --- Evento: {convidados[i].idEvento}");
+                        _context.Remove(convidados[i]);
+                              await _context.SaveChangesAsync();
+                        return NoContent();
+                    }
+                }    
                 
                 return NoContent();
             }

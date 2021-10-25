@@ -22,17 +22,9 @@ namespace API.Models
         public string local { get; set; }
     }
 
-    public class Organizador
-    {
-        [Key]
-        public int idOrganizador { get; set; }
-        public string nomeUsuario { get; set; }
-        public string idEvento { get; set; }
-    }
     public class Convidado 
     {
         [Key]
-        public int idConvidado { get; set; }
         public string nomeUsuario { get; set; }
         public string idEvento { get; set; }
     }

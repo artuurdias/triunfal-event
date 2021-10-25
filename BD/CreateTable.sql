@@ -25,12 +25,20 @@ create table Evento (
 )
 
 
-create table Convidado (
+/*create table Convidado (
 	idConvidado int identity(1,1) primary key,
 	idEvento char(6) not null,
 	nomeUsuario varchar(25) not null,
 	foreign key (idEvento)    references Evento(id),
 	foreign key (nomeUsuario) references Usuario(username)
+)*/
+
+create table Convidado (
+	idEvento char(6) not null,
+	nomeUsuario varchar(25) not null,
+	foreign key (idEvento)    references Evento(id),
+	foreign key (nomeUsuario) references Usuario(username),
+	primary key (idEvento, nomeUsuario)
 )
 
 
