@@ -25,17 +25,40 @@ namespace API.Controllers
             return _context.Dica.ToList();
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Dica> GetById(int id)
+        [HttpGet("{tipoEvento}/{conteudo}")]
+        public ActionResult<Dica> GetById(string tipoEvento, string conteudo)
         {
             try
             {
-                return _context.Dica.Find(id);
+                var dica = _context.Dica.Find(tipoEvento, conteudo);
+                
+                if (dica == null) 
+                    return NotFound();
+
+                return dica;
             }
             catch 
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados.");
             }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Post(Dica dica)
+        {
+            try
+            {
+                _context.Dica.Add(dica);
+
+                if (await _context.SaveChangesAsync() == 1)
+                    return Created($"/api/dica/{dica.tipoEvento}/{dica.conteudo}", dica);
+            }
+            catch
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados.");
+            }
+            
+            return BadRequest();
         }
     }
 }
