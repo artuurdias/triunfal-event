@@ -51,88 +51,92 @@ public interface Service {
 
     @DELETE("/api/evento/{id}")
     Call<Evento> deleteEvento(@Path("id") String id);
+    
+    @GET("/api/usuario/{username}/eventos")
+    Call<List<Evento>> getUserEvents(@Path("username") String username);
 
 
     /******************* CRUD CONVIDADOS *******************/
     @GET("/api/convidado")
     Call<List<Convidado>> getConvidados();
 
-    @GET("/api/convidado/{idConvidado}")
-    Call<Convidado> getConvidado(@Path("idConvidado") String id);
+    @GET("/api/convidado/{nomeUsuario}/{idEvento}")
+    Call<Convidado> getConvidado(@Path("nomeUsuario") String nomeUsuario, @Path("idEvento") String idEvento);
 
     @POST("/api/convidado/")
     Call<Convidado> postConvidado(@Body Convidado convidado);
 
-    @PUT("/api/convidado/{idConvidado}")
-    Call<Convidado> putConvidado(@Path("idConvidado") String id, @Body Convidado convidado);
+    @PUT("/api/convidado/{nomeUsuario}/{idEvento}")
+    Call<Convidado> putConvidado(@Path("nomeUsuario") String nomeUsuario, @Path("idEvento") String idEvento, @Body Convidado convidado);
 
-    @DELETE("/api/convidado/{idConvidado}")
-    Call<Convidado> deleteConvidado(@Path("idConvidado") String id);
+    @DELETE("/api/convidado/{nomeUsuario}/{idEvento}")
+    Call<Convidado> deleteConvidado(@Path("nomeUsuario") String nomeUsuario, @Path("idEvento") String idEvento);
 
 
     /******************* CRUD LEMBRETES *******************/
     @GET("/lembrete")
     Call<List<Lembrete>> getLembretes();
 
-    @GET("/api/convidado/{id}")
-    Call<Lembrete> getLembrete(@Path("id") String id);
+    @GET("/api/convidado/{usuario}/{data}")
+    Call<Lembrete> getLembrete(@Path("usuario") String usuario, @Path("data") String data);
 
     @POST("/api/convidado")
     Call<Lembrete> postLembrete(@Body Lembrete lembrete);
 
-    @PUT("/api/convidado/{id}")
-    Call<Lembrete> putLembrete(@Path("id") String id, @Body Lembrete lembrete);
+    @PUT("/api/convidado/{usuario}/{data}")
+    Call<Lembrete> putLembrete(@Path("usuario") String usuario, @Path("data") String data, @Body Lembrete lembrete);
 
-    @DELETE("/api/convidado/{id}")
-    Call<Lembrete> deleteLembrete(@Path("id") String id);
+    @DELETE("/api/convidado/{usuario}/{data}")
+    Call<Lembrete> deleteLembrete(@Path("usuario") String usuario, @Path("data") String data);
 
 
     /******************* CRUD DICAS *******************/
     @GET("/dica")
     Call<List<Dica>> getDicas();
 
-    @GET("/api/dica/{id}")
-    Call<Dica> getDica(@Path("id") String id);
+    @GET("/api/dica/{tipoEvento}/{conteudo}")
+    Call<Dica> getDica(@Path("tipoEvento") String tipoEvento, @Path("conteudo") String conteudo);
 
     @POST("/api/dica/")
     Call<Dica> postDica(@Body Dica dica);
 
-    @PUT("/api/dica/{id}")
-    Call<Dica> putDica(@Path("id") String id, @Body Dica dica);
+    @PUT("/api/dica/{tipoEvento}/{conteudo}")
+    Call<Dica> putDica(@Path("tipoEvento") String tipoEvento, @Path("conteudo") String conteudo, @Body Dica dica);
 
-    @DELETE("/api/dica/{id}")
-    Call<Dica> deleteDica(@Path("id") String id);
+    @DELETE("/api/dica/{tipoEvento}/{conteudo}")
+    Call<Dica> deleteDica(@Path("tipoEvento") String tipoEvento, @Path("conteudo") String conteudo);
 
 
     /******************* CRUD FERIADOS *******************/
     @GET("/feriado")
     Call<List<Feriado>> getFeriados();
 
-    @GET("/api/feriado/{id}")
-    Call<Feriado> getFeriado(@Path("id") String id);
+    @GET("/api/feriado/{nome}")
+    Call<Feriado> getFeriado(@Path("nome") String nome);
 
     @POST("/api/feriado/")
     Call<Feriado> postFeriado(@Body Feriado feriado);
 
-    @PUT("/api/feriado/{id}")
-    Call<Feriado> putFeriado(@Path("id") String id, @Body Feriado feriado);
+    @PUT("/api/feriado/{nome}")
+    Call<Feriado> putFeriado(@Path("nome") String nome, @Body Feriado feriado);
 
-    @DELETE("/api/feriado/{id}")
-    Call<Feriado> deleteFeriado(@Path("id") String id);
+    @DELETE("/api/feriado/{nome}")
+    Call<Feriado> deleteFeriado(@Path("nome") String nome);
+    
 
     /******************* CRUD CONVITES *******************/
     @GET("api/convite")
     Call<List<Convite>> getConvites();
 
-    @GET("/api/convite/{id}")
-    Call<Convite> getConvite(@Path("id") String id);
+    @GET("/api/convite/{nomeUsuario}/{idEvento}")
+    Call<Convite> getConvite(@Path("nomeUsuario") String nomeUsuario, @Path("idEvento") String idEvento);
 
     @POST("/api/convite/")
     Call<Convite> postConvite(@Body Convite convite);
 
-    @PUT("/api/convite/{id}")
-    Call<Convite> putConvite(@Path("id") String id, @Body Convite convite);
+    @PUT("/api/convite/{nomeUsuario}/{idEvento}")
+    Call<Convite> putConvite(@Path("nomeUsuario") String nomeUsuario, @Path("idEvento") String idEvento, @Body Convite convite);
 
-    @DELETE("/api/convite/{id}")
-    Call<Convite> deleteConvites(@Path("id") String id);
+    @DELETE("/api/convite/{nomeUsuario}/{idEvento}")
+    Call<Convite> deleteConvites(@Path("nomeUsuario") String nomeUsuario, @Path("idEvento") String idEvento);
 }
