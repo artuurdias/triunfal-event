@@ -42,39 +42,35 @@ create table Convidado (
 )
 
 
-create table Lembrete (
-	id int identity(1,1) primary key,
-	titulo varchar(50) unique not null,
-	data varchar(10) not null,
+create table Lembrete(
+	nome varchar(50),
+	data char(10),
 	local varchar(50) not null,
-	descricao varchar(100) null,
-	usuario varchar(25) not null,
-	foreign key (usuario)    references Usuario(username),
+	usuario varchar(25),
+	foreign key (usuario) references Usuario(username),
+	primary key(usuario, data)
 )
 
-
-create table Feriado (
-	id int identity(1,1) primary key,
-	nome varchar(50) unique not null,
-	data varchar(10) not null
+create table Feriado(
+	nome varchar(50) primary key,
+	data char(5) not null
 )
 
-
-create table Dica (
-	id int identity(1,1) primary key,
-	tipoEvento varchar(50) not null,
-	conteudo varchar(500) not null,
-	foreign key (tipoEvento)    references TipoEvento(nome),
+create table Dica(
+	tipoEvento varchar(50),
+	conteudo varchar(300),
+	foreign key (tipoEvento) references TipoEvento(nome),
+	primary key (tipoEvento, conteudo)
 )
 
-create table Convite (
-	id int identity(1,1) primary key,
-	data varchar(10) not null,
-	mensagem varchar(100) null, 
-	idEvento char(6) not null,
+create table Convite(
 	nomeUsuario varchar(25) not null,
+    	idEvento char(6) not null,
+    	mensagem varchar(100) not null,
+    	data char(10) not null,
 	foreign key (idEvento)    references Evento(id),
-	foreign key (nomeUsuario) references Usuario(username)
+	foreign key (nomeUsuario) references Usuario(username),
+	primary key (nomeUsuario, idEvento)
 )
 
 drop table Usuario
@@ -96,7 +92,7 @@ drop table Convite
 	Defini a Data pra varchar de 10 em todas tabelas
 	Criei tabela TipoEvento 
 	Alterei a tabela EVento para q recebesse a foreing key TipoEvento
-	coloquei um campo descrição para a tabela lembrete
+	coloquei um campo descriÃ§Ã£o para a tabela lembrete
 	Adicionei organizador na tabela evento como fk
 */
 
