@@ -20,13 +20,23 @@ namespace API.Models
         public string tipo { get; set; }
         public string data { get; set; }
         public string local { get; set; }
+        public string organizador { get; set; }
     }
 
-    public class Convidado 
+    public class Convidado
     {
         [Key]
         public string nomeUsuario { get; set; }
         public string idEvento { get; set; }
+    }
+
+    public class Convite
+    {
+        [Key]
+        public string nomeUsuario { get; set; }
+        public string idEvento { get; set; }
+        public string mensagem { get; set; }
+        public string data { get; set; }
     }
 
     public class Dica
@@ -50,14 +60,5 @@ namespace API.Models
         [Key]
         public string nome { get; set; }
         public string data { get; set; }
-    }
-
-    public class Convite
-    {
-        [Key]
-        public string   nomeUsuario { get; set; }
-        public string   idEvento    { get; set; }
-        public string   data        { get; set; }
-        public string   mensagem    { get; set; }
     }
 }
