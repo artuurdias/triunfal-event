@@ -25,17 +25,39 @@ namespace API.Controllers
             return _context.Feriado.ToList();
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Feriado> GetById(int id)
+        [HttpGet("{nome}")]
+        public ActionResult<Feriado> GetById(string nome)
         {
             try
             {
-                return _context.Feriado.Find(id);
+                var feriado = _context.Feriado.Find(nome);
+
+                if (feriado == null)
+                    return NotFound();
+
+                return feriado;
             }
             catch 
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados.");
             }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Post(Feriado feriado)
+        {
+            try
+            {
+                _context.Feriado.Add(feriado);
+
+                if (await _context.SaveChangesAsync() == 1)
+                    return Created($"/api/feriado/{feriado.nome}", feriado);
+            }
+            catch
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados.");
+            }
+            return BadRequest();
         }
     }
 }
