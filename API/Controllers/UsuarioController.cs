@@ -38,6 +38,36 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("{username}/eventos")]
+        public ActionResult<List<Evento>> getUserEvents(string username)
+        {
+            var convidados = _context.Convidado.ToList();
+            var eventos = _context.Evento.ToList();
+
+            int cont = 0;
+            var lista = new List<Evento>(convidados.Count);
+
+            for (int i = 0; i < convidados.Count; i++)
+                if (convidados[i].nomeUsuario == username)
+                {
+                    lista.Add(_context.Evento.Find(convidados[i].idEvento));
+                    cont++;
+                }
+            
+            for (int i = 0; i < eventos.Count; i++)
+                if (eventos[i].organizador == username)
+                {
+                    lista.Add(eventos[i]);
+                    cont++;
+                }
+
+            var newLista = new List<Evento>(cont);
+            for (int i = 0; i < cont; i++)
+                newLista.Add(lista[i]);
+            
+            return newLista;
+        }
+
         [HttpPost]
         public async Task<ActionResult> PostUser(Usuario user)
         {
