@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +31,8 @@ namespace API.Controllers
         {
             try
             {
-                return _context.Evento.Find(id);
+		        var events = _context.Evento.Find(id);
+                return events;
             }
             catch 
             {
@@ -91,6 +93,7 @@ namespace API.Controllers
                 result.tipo = evento.tipo;
                 result.data = evento.data;
                 result.local = evento.local;
+                result.organizador = evento.organizador;
                 
                 await _context.SaveChangesAsync();
                 return NoContent();
