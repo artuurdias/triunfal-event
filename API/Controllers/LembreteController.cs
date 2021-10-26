@@ -25,12 +25,17 @@ namespace API.Controllers
             return _context.Lembrete.ToList();
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Lembrete> GetById(int id)
+        [HttpGet("{usuario}/{data}")]
+        public ActionResult<Lembrete> GetById(string usuario, string data)
         {
             try
             {
-                return _context.Lembrete.Find(id);
+                var lembrete = _context.Lembrete.Find(usuario, data);
+
+                if (lembrete == null)
+                    return NotFound();
+
+                return lembrete;
             }
             catch 
             {
@@ -38,14 +43,15 @@ namespace API.Controllers
             }
         }
 
-         [HttpPost]
+        [HttpPost]
         public async Task<ActionResult> Post(Lembrete lembrete)
         {
             try
             {
                 _context.Lembrete.Add(lembrete);
+
                 if (await _context.SaveChangesAsync() == 1)
-                    return Created($"/api/lembrete/{lembrete.id}", lembrete);
+                    return Created($"/api/lembrete/{lembrete.usuario}/{lembrete.data}", lembrete);
             }
             catch
             {
@@ -54,12 +60,13 @@ namespace API.Controllers
             return BadRequest();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        [HttpDelete("{usuario}/{data}")]
+        public async Task<ActionResult> Delete(string usuario, string data)
         {
             try
             {
-                var lembrete = await _context.Lembrete.FindAsync(id);
+                var lembrete = await _context.Lembrete.FindAsync(usuario, data);
+
                 if (lembrete == null)
                     return NotFound();
 
