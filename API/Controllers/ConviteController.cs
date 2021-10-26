@@ -3,8 +3,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using API.Models;
 using API.Data;
+using API.Models;
 
 namespace API.Controllers
 {
