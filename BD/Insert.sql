@@ -54,7 +54,7 @@ insert into Convidado values('JDN764', 'Arturzao')
 insert into Convidado values('298GCV', 'Arturzao')
 
 select * from Convidado
-delete from Convidado where idConvidado >= 0
+delete from Convidado where 1 >= 0
 
 
 /**********************************************************************************************************************/
@@ -104,6 +104,7 @@ insert into Convite values('Fabriciao', 'JDN764', 'Você está convidado!', '02/04
 insert into Convite values('Arturzao', 'JDN764', 'Você está convidado!', '02/04' );
 insert into Convite values('Arturzao', '298GCV', 'Você está convidado!', '02/04' );
 insert into Convite values('Fabiao', 'JDN764', 'Você está convidado!', '02/04' );
+insert into Convite values('Arturzao', 'HDBNWU', 'Você está convidado!', '02/04' );
 
 select * from Convite
 delete from Convite where id >= 0

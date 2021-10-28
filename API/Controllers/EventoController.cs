@@ -56,10 +56,7 @@ namespace API.Controllers
                 for(int i = 0; i < convites.Count; i++)
                 {
                     evento = _context.Evento.Find(convites[i].idEvento);
-                    if( evento.id == convites[i].idEvento)
-                    {
-                        ret.Add(evento);
-                    }
+                    ret.Add(evento);
                 }
 
                 return ret;

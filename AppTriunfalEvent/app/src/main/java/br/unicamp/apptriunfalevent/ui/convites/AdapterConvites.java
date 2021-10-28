@@ -3,12 +3,14 @@ package br.unicamp.apptriunfalevent.ui.convites;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import br.unicamp.apptriunfalevent.Models.Convidado;
 import br.unicamp.apptriunfalevent.Models.Convite;
 import br.unicamp.apptriunfalevent.Models.Evento;
 import br.unicamp.apptriunfalevent.R;
+import br.unicamp.apptriunfalevent.ui.Activities.HomeActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -107,12 +110,16 @@ public class AdapterConvites extends BaseAdapter {
             Toast.makeText(context, "Não carregou a imagem", Toast.LENGTH_LONG).show();
         }*/
 
+            app.findViewById(R.id.spinnerTipoEvento_criarEV);
+
 
             tvOK_convite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     aceitarConvite(position);
                     deletarConvite(position);
+                    //inicializarTela();
+
                 }
             });
 
@@ -139,25 +146,25 @@ public class AdapterConvites extends BaseAdapter {
 
         convite = lista.get(pos);
 
-            Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
-            Call<Evento> call = service.getEvento(convite.getIdEvento());
+        Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
+        Call<Evento> call = service.getEvento(convite.getIdEvento());
 
-            call.enqueue(new Callback<Evento>() {
-                @Override
-                public void onResponse(Call<Evento> call, Response<Evento> response) {
+        call.enqueue(new Callback<Evento>() {
+            @Override
+            public void onResponse(Call<Evento> call, Response<Evento> response) {
 
-                    if (response.isSuccessful()) {
-                        evento = (Evento) response.body();
-                    } else {
-                        Toast.makeText(context, "ERRO EVENTO!", Toast.LENGTH_LONG).show();
-                    }
+                if (response.isSuccessful()) {
+                    evento = (Evento) response.body();
+                } else {
+                    Toast.makeText(context, "ERRO EVENTO!", Toast.LENGTH_LONG).show();
                 }
+            }
 
-                @Override
-                public void onFailure(Call<Evento> call, Throwable t) {
-                    Toast.makeText(context, "ERRO EVENTO FAILURE!", Toast.LENGTH_LONG).show();
-                }
-            });
+            @Override
+            public void onFailure(Call<Evento> call, Throwable t) {
+                Toast.makeText(context, "ERRO EVENTO FAILURE!", Toast.LENGTH_LONG).show();
+            }
+        });
 
         //LayoutInflater é utilizado para inflar nosso layout em uma view.
         //-pegamos nossa instancia da classe
@@ -242,5 +249,71 @@ public class AdapterConvites extends BaseAdapter {
             }
         });
 
+    }
+
+
+
+    public void inicializarTela(){
+
+        Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
+        Session session = new Session(context);
+
+        Call<List<Convite>> call = service.getConvitesUser(session.getusename());
+        call.enqueue(new Callback<List<Convite>>() {
+            @Override
+            public void onResponse(Call<List<Convite>> call, Response<List<Convite>> response) {
+
+                if(response.isSuccessful()){
+
+                    List<Convite> listConvite = response.body();
+                    populateGridView(listConvite);
+
+                }else{
+                    String errorMessage = response.errorBody().toString();
+                    Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "entrou no else do response", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Convite>> call, Throwable t) {
+                String messageProblem = t.getMessage().toString();
+                Toast.makeText(context, messageProblem, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "entrou no else do Failure", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void populateGridView(List<Convite> lista){
+        GridView conviteGridView = (GridView) app.findViewById(R.id.gridConvites);
+
+        if(lista.size() > 0) {
+            AdapterConvites adapter = new AdapterConvites(context, app, lista);
+            conviteGridView.setAdapter(adapter);
+        }
+        else{
+            exibirErro();
+        }
+    }
+
+    private void exibirErro() {
+        //LayoutInflater é utilizado para inflar nosso layout em uma view.
+        //-pegamos nossa instancia da classe
+        new AlertDialog.Builder(context)
+                .setTitle("Nenhum novo convite!")
+                .setMessage("Quando você tiver novos convites de eventos, você os verá aqui.")
+
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Continue with delete operation
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                //.setNegativeButton(android.R.string.no, null)
+                .setIcon(R.drawable.ic_baseline_warning_24)
+                .show();
     }
 }

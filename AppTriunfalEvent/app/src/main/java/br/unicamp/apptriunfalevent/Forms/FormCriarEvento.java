@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,11 +40,9 @@ public class FormCriarEvento extends AppCompatActivity {
     private Button   btnCriarEvento_criarEV;
     private EditText edtNome_criarEV, edtTipo_criarEV, edtData_criarEV, edtLocal_criarEV;
     private TextView tvAviso_criarEV;
-
+    //ArrayList<String> itens;
+    String[] itens;
     private Session session;
-
-    List<TipoEvento>  itens;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +60,7 @@ public class FormCriarEvento extends AppCompatActivity {
         session = new Session(this);
 
         //get the spinner from the xml.
-        Spinner dropdown = findViewById(R.id.spinnerTipoEvento_criarEV);
+      /*
         //create a list of items for the spinner.
 
 
@@ -69,14 +68,40 @@ public class FormCriarEvento extends AppCompatActivity {
         Call<List<TipoEvento>> call = service.getTipoEventos();
 
 
-        call.enqueue(new Callback<List<TipoEvento>>() {
+        try {
+            Response<List<TipoEvento>> response = call.execute();
+            int qtd = response.body().size();
+            //itens = new ArrayList<String>(qtd);
+            itens = new String[qtd];
+
+            Toast.makeText(FormCriarEvento.this, "SUCESSO!", Toast.LENGTH_LONG).show();
+            for(int i = 0; i < qtd; i++)
+            {
+                // itens.add(response.body().get(i).getNome());
+                itens[i] = response.body().get(i).getNome();
+                System.err.println(response.body().get(i).getNome());
+            }
+        }
+        catch (Exception erro){
+            Toast.makeText(FormCriarEvento.this, "KKKKKK FUDEU", Toast.LENGTH_LONG).show();
+        }
+*/
+     /*   call.enqueue(new Callback<List<TipoEvento>>() {
             @Override
             public void onResponse(Call<List<TipoEvento>> call, Response<List<TipoEvento>> response) {
                 if (response.isSuccessful()) {
 
-                    Toast.makeText(FormCriarEvento.this, "SUCESSO!", Toast.LENGTH_LONG).show();
-                    itens = response.body();
+                    int qtd = response.body().size();
+                    //itens = new ArrayList<String>(qtd);
+                    itens = new String[qtd];
 
+                    Toast.makeText(FormCriarEvento.this, "SUCESSO!", Toast.LENGTH_LONG).show();
+                    for(int i = 0; i < qtd; i++)
+                    {
+                        //itens.add(response.body().get(i).getNome());
+                        itens[i] = response.body().get(i).getNome();
+                        System.err.println(response.body().get(i).getNome());
+                    }
                 }
                 else {
                     Toast.makeText(FormCriarEvento.this, "ERRO!", Toast.LENGTH_SHORT).show();
@@ -91,9 +116,13 @@ public class FormCriarEvento extends AppCompatActivity {
 
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<TipoEvento> adapter = new ArrayAdapter<TipoEvento>(this, android.R.layout.simple_spinner_dropdown_item, itens);
+       // ArrayAdapter<TipoEvento> adapter = new ArrayAdapter<TipoEvento>(this, android.R.layout.simple_spinner_dropdown_item, itens);
+
+        Spinner dropdown = findViewById(R.id.spinnerTipoEvento_criarEV);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itens);
+
         //set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
+        dropdown.setAdapter(adapter);*/
 
         btnCriarEvento_criarEV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +134,6 @@ public class FormCriarEvento extends AppCompatActivity {
                 }
                 else {
                     tvAviso_criarEV.setVisibility(View.GONE);
-                    // Toast.makeText(FormCriarEvento.this, "SEXO", Toast.LENGTH_SHORT).show();
 
                     String codigo = getRandomString(6);
 

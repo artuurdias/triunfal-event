@@ -82,7 +82,7 @@ public class ConvitesFragment extends Fragment {
             conviteGridView.setAdapter(adapter);
         }
         else{
-            exibirEvento();
+            exibirErro();
         }
     }
 
@@ -117,7 +117,7 @@ public class ConvitesFragment extends Fragment {
         });
     }
 
-    private void exibirEvento() {
+    private void exibirErro() {
         //LayoutInflater é utilizado para inflar nosso layout em uma view.
         //-pegamos nossa instancia da classe
         new AlertDialog.Builder(getContext())

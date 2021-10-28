@@ -50,10 +50,29 @@ public class IngressarEvento extends AppCompatActivity {
                     return;
                 }
 
-                //Convidado convidado = new Convidado((int) 5, codigo, session.getusename());
+                Convidado convidado = new Convidado(session.getusename(), codigo.toString());
 
                 Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
-                Call<Usuario> call = service.getUsuario(session.getusename());
+
+                Call<Convidado> call = service.postConvidado(convidado);
+                call.enqueue(new Callback<Convidado>() {
+                    @Override
+                    public void onResponse(Call<Convidado> call, Response<Convidado> response) {
+                        if(response.isSuccessful()){
+                            Toast.makeText(IngressarEvento.this, "SUCESSO", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(IngressarEvento.this, "SU", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Convidado> call, Throwable t) {
+                        Toast.makeText(IngressarEvento.this, "SUCEO", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
 
                 try {
                     //Response<Usuario> response = call.execute();

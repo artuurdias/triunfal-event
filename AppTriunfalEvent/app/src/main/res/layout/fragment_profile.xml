@@ -90,15 +90,10 @@
     <TextView
         android:id="@+id/tvUsername"
         style="@style/TextView_Profile"
-        android:text="Fabriciao"
         app:layout_constraintTop_toBottomOf="@id/containerUser"
         app:layout_constraintStart_toEndOf="@+id/imv_iconeUsername"
         />
-    <!--android:text="Fabricio Onofre"
-    android:text="fabricio.falcoon@gmail.com"
-      android:text="22/09/2021"
-      android:text="22/09/2021"
-    -->
+
     <EditText
         android:id="@+id/edtNome_profile"
         style="@style/TextView_Profile"
