@@ -51,6 +51,7 @@ namespace API.Models
         [Key]
         public string nome { get; set; }
         public string data { get; set; }
+        public string descricao { get; set; }
         public string local { get; set; }
         public string usuario { get; set; }
     }
@@ -60,5 +61,14 @@ namespace API.Models
         [Key]
         public string nome { get; set; }
         public string data { get; set; }
+    }
+
+    public class TipoEvento
+    {
+        [Key]
+        public int  id { get; set; }
+        public string nome { get; set; }
+        public string definicao { get; set; }
+        public string exemplos { get; set; }
     }
 }

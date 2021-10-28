@@ -26,7 +26,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{nomeUsuario}/{idEvento}/")]
-        public ActionResult<Convite> GetByIdUsername(string nomeUsuario, string idEvento)
+        public ActionResult<Convite> GetByIdConvite(string nomeUsuario, string idEvento)
         {
             try
             {
@@ -36,6 +36,44 @@ namespace API.Controllers
                     return NotFound();
 
                 return convite;
+            }
+            catch
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. ");
+            }
+        }
+
+        [HttpGet("user/{nomeUsuario}")]
+        public ActionResult<List<Convite>> GetByIdUsername(string nomeUsuario)
+        {
+            try
+            {
+                //var convite = _context.Convite.ToList().Find();
+                var convites = _context.Convite.ToList().FindAll(i => i.nomeUsuario == nomeUsuario);
+
+                if (convites == null)
+                    return NotFound();
+
+                return convites;
+            }
+            catch
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. ");
+            }
+        }
+
+        [HttpGet("evento/{idEvento}")]
+        public ActionResult<List<Convite>> GetByIdEvento(string idEvento)
+        {
+            try
+            {
+                //var convite = _context.Convite.ToList().Find();
+                var convites = _context.Convite.ToList().FindAll(i => i.idEvento == idEvento);
+
+                if (convites == null)
+                    return NotFound();
+
+                return convites;
             }
             catch
             {

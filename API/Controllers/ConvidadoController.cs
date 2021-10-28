@@ -26,7 +26,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{nomeUsuario}/{idEvento}/")]
-        public ActionResult<Convidado> GetByIdUsername(string nomeUsuario, string idEvento)
+        public ActionResult<Convidado> GetByIdUsernameEvent(string nomeUsuario, string idEvento)
         {
             try
             {
@@ -43,6 +43,25 @@ namespace API.Controllers
             }
         }
 
+        
+        [HttpGet("{nomeUsuario}")]
+        public ActionResult<List<Convidado>> GetByIdUsername(string nomeUsuario)
+        {
+            try
+            {
+                //var convite = _context.Convite.ToList().Find();
+                var convites = _context.Convidado.ToList().FindAll(i => i.nomeUsuario == nomeUsuario);
+
+                if (convites == null)
+                    return NotFound();
+
+                return convites;
+            }
+            catch
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. ");
+            }
+        }
 
         [HttpPost]
         public async Task<ActionResult> PostConvidado(Convidado convidado)
@@ -65,15 +84,15 @@ namespace API.Controllers
         public async Task<ActionResult> Delete(string nomeUsuario, string idEvento)
         {
             try
-            {
-                var convidado = _context.Convidado.Find(nomeUsuario, idEvento);
+            { 
+
+                var convidado = _context.Convidado.Find(nomeUsuario, idEvento.ToUpper());
 
                 if (convidado == null)
                     return NotFound();
 
                 _context.Remove(convidado);
                 await _context.SaveChangesAsync();
-
                 return NoContent();
             }
             catch

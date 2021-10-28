@@ -40,6 +40,36 @@ namespace API.Controllers
             }
         }
 
+                
+        [HttpGet("user/{username}")]
+        public ActionResult<List<Evento>> GetByIdUsername(string username)
+        {
+            try
+            {
+
+                var convites    = _context.Convidado.ToList().FindAll(i => i.nomeUsuario == username);
+
+                List<Evento> ret    = new List<Evento>(convites.Count);
+
+                Evento evento = null;
+
+                for(int i = 0; i < convites.Count; i++)
+                {
+                    evento = _context.Evento.Find(convites[i].idEvento);
+                    if( evento.id == convites[i].idEvento)
+                    {
+                        ret.Add(evento);
+                    }
+                }
+
+                return ret;
+            }
+            catch 
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados.");
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult> PostEvent(Evento evento)
         {

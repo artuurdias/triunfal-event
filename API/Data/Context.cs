@@ -20,7 +20,10 @@ namespace API.Data
                 d.tipoEvento, d.conteudo
             });
             modelBuilder.Entity<Lembrete>().HasKey(l => new {
-                l.usuario, l.data
+                l.usuario, l.nome
+            });
+            modelBuilder.Entity<TipoEvento>().HasKey(l => new {
+                l.id, l.nome
             });
         }
 
@@ -31,5 +34,6 @@ namespace API.Data
         public DbSet<Lembrete> Lembrete { get; set; }
         public DbSet<Feriado> Feriado { get; set; }
         public DbSet<Convite> Convite { get; set; }
+        public DbSet<TipoEvento> TipoEvento { get; set; }
     }
 }
