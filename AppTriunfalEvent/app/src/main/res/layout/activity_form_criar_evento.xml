@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Forms.FormCriarEvento">
+
+
+    <ImageView
+        android:id="@+id/logo_criarEV"
+        android:layout_width="112dp"
+        android:layout_height="91dp"
+        android:src="@drawable/icone_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+    />
+
+    <TextView
+        android:id="@+id/tvCriarEvento_criarEV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Criar evento"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="60dp"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_criarEV" />
+
+    <View
+        android:id="@+id/containerComponents_cadastro"
+        style="@style/ContainerComponents"
+        android:layout_height="330dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCriarEvento_criarEV"
+        />
+
+    <EditText
+        android:id="@+id/edtNome_criarEV"
+        style="@style/Edit_Text"
+        android:inputType="text"
+        android:drawableRight="@drawable/ic_baseline_person_search_24"
+        android:hint="Nome do evento"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents_cadastro"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_cadastro"
+        app:layout_constraintTop_toTopOf="@+id/containerComponents_cadastro" />
+
+
+
+    <EditText
+        android:id="@+id/edtTipo_criarEV"
+        style="@style/Edit_Text"
+        android:inputType="textEmailAddress"
+        android:drawableRight="@drawable/ic_baseline_email_24"
+        android:hint="Tipo do evento"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents_cadastro"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_cadastro"
+        app:layout_constraintTop_toBottomOf="@+id/edtNome_criarEV"
+        />
+
+
+
+    <EditText
+        android:id="@+id/edtData_criarEV"
+        style="@style/Edit_Text"
+        android:inputType="text"
+        android:drawableRight="@drawable/ic_baseline_person_24"
+        android:hint="Data do evento"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents_cadastro"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_cadastro"
+        app:layout_constraintTop_toBottomOf="@+id/edtTipo_criarEV"
+        />
+
+    <EditText
+        android:id="@+id/edtLocal_criarEV"
+        style="@style/Edit_Text"
+        android:drawableRight="@drawable/ic_baseline_calendar_today_24"
+        android:hint="Local do evento"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents_cadastro"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_cadastro"
+        app:layout_constraintTop_toBottomOf="@+id/edtData_criarEV"
+    />
+
+    <TextView
+        android:id="@+id/tvAviso_criarEV"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#FF0000"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents_cadastro"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_cadastro"
+        app:layout_constraintTop_toBottomOf="@+id/edtLocal_criarEV"
+    />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCriarEvento_criarEV"
+        style="@style/Button"
+        android:text="Criar evento"
+        android:textSize="20dp"
+        android:background="@drawable/background"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerComponents_cadastro"
+    />
+
+
+    <Spinner
+        android:id="@+id/spinnerTipoEvento_criarEV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCriarEvento_criarEV"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".ui.Activities.EventoCriado">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="112dp"
+            android:layout_height="91dp"
+            android:layout_marginLeft="150dp"
+            android:src="@drawable/icone_logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:text="Insira o código do evento:"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="cursive"
+                android:textSize="40dp"
+            />
+
+            <EditText
+                android:id="@+id/edtCodigo_ingressarEV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Edit_Text"
+                android:textAlignment="center"
+                android:hint="Código"
+                android:layout_marginTop="50dp"
+            />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Código de 6 dígitos!"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:fontFamily="cursive"
+                android:layout_marginTop="5dp"
+            />
+
+            <TextView
+                android:id="@+id/tvAviso_ingressarEV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FF0000"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:layout_marginTop="30dp"
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/btnIngressarEvento_ingressarEV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#DAA550"
+                android:padding="15dp"
+                android:text="Ingressar"
+                android:textColor="#FFF"
+                android:textSize="25dp"
+                android:textAlignment="center"
+                android:layout_marginLeft="110dp"
+            />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
