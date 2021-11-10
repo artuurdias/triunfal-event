@@ -117,3 +117,4 @@ C:\Users\aluno\Music\Repositorios_Git\triunfal-event\API\obj\Debug\net5.0\API.pd
 C:\Users\aluno\Music\Repositorios_Git\triunfal-event\API\obj\Debug\net5.0\API.genruntimeconfig.cache
 C:\Users\aluno\Music\Repositorios_Git\triunfal-event\api\bin\Debug\net5.0\package-lock.json
 C:\Users\aluno\Music\Repositorios_Git\triunfal-event\api\bin\Debug\net5.0\package.json
+C:\Users\aluno\Music\Repositorios_Git\triunfal-event\api\obj\Debug\net5.0\API.csproj.CopyComplete

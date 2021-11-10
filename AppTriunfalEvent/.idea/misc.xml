@@ -4,27 +4,46 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidSDK/platforms/android-31/data/res/layout/simple_spinner_dropdown_item.xml" value="0.159375" />
+        <entry key="..\:/AndroidSDK/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/drawable/background_header.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/drawable/custom_loading_event.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/drawable/customborder.xml" value="0.1712962962962963" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.15185185185185185" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/drawable/ic_round_close_24.xml" value="0.15185185185185185" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_cadastro1.xml" value="0.22" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_evento_criado.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_evento_maps.xml" value="0.18" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_form_cadastro.xml" value="0.1328125" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_form_criar_evento.xml" value="0.21" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_form_evento.xml" value="0.22" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_form_evento2.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_form_evento_nome.xml" value="0.2" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_form_login.xml" value="0.1" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_home.xml" value="0.13958333333333334" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_ingressar_evento.xml" value="0.22" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_main.xml" value="0.1625" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_mapa.xml" value="0.1078125" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/activity_welcome.xml" value="0.1" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/adapter_convite.xml" value="0.22" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/adapter_events.xml" value="0.2" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/adapter_maps.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/app_bar_home.xml" value="0.13958333333333334" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/content_home.xml" value="0.1" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/content_mapa.xml" value="0.1078125" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/dialog_event.xml" value="0.25" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/dialog_maps.xml" value="0.13645833333333332" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_calendario.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_convites.xml" value="0.1625" />
-        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_events.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_event_ativos.xml" value="0.13072916666666667" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_event_disponiveis.xml" value="0.13072916666666667" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_event_passados.xml" value="0.13072916666666667" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_events.xml" value="0.21" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_first.xml" value="0.1078125" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_home.xml" value="0.2115036231884058" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_second.xml" value="0.1078125" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_tab1.xml" value="0.16" />
+        <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/fragment_tap2.xml" value="0.1" />
         <entry key="..\:/Users/aluno/Music/Repositorios_Git/triunfal-event/AppTriunfalEvent/app/src/main/res/layout/layoute_gridview.xml" value="0.2115036231884058" />
         <entry key="..\:/Users/aluno/Music/Tecnico/Pratica Prof/AppTriunfalEvent/app/src/main/res/drawable/background.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/aluno/Music/Tecnico/Pratica Prof/AppTriunfalEvent/app/src/main/res/drawable/background_header.xml" value="0.15885416666666666" />

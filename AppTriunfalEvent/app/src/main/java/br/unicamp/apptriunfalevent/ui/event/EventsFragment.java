@@ -4,13 +4,19 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.Toast;
+
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ConcurrentModificationException;
 import java.util.List;
@@ -26,73 +32,60 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EventsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 
 public class EventsFragment extends Fragment {
 
-    private GridView eventsGridView;
-    private EventsVielModel homeViewModel;
-    private FragmentEventsBinding binding;
-    private AdapterEvents adapter;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private TabItem tab1, tab2, tab3;
+    private PagerAdapter pagerAdapter;
+    private View rootView;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        homeViewModel = new ViewModelProvider(this).get(EventsVielModel.class);
-
-        binding = FragmentEventsBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        rootView =  inflater.inflate(R.layout.fragment_events, container, false);
 
 
-        //Download JSON via Retrofit
-        Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
+        tabLayout = (TabLayout) rootView.findViewById(R.id.tabLayout);
 
-        Session session = new Session(getContext());
+        tab1 =  (TabItem) rootView.findViewById(R.id.eventAtuais);
+        tab2 = (TabItem) rootView.findViewById(R.id.eventDisponiveis);
+        tab3 = (TabItem) rootView.findViewById(R.id.eventPassados);
 
-        //Pegar a rota do Json
+        viewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
 
-        Call<List<Evento>> call = service.getEventosUser(session.getusename());
-        call.enqueue(new Callback<List<Evento>>() {
+        pagerAdapter = new PageAdapter(getActivity().getSupportFragmentManager(),tabLayout.getTabCount());
+
+        viewPager.setAdapter(pagerAdapter);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onResponse(Call<List<Evento>> call, Response<List<Evento>> response) {
-
-                if(response.isSuccessful()){
-                    Toast.makeText(getContext(), "deu certo", Toast.LENGTH_LONG).show();
-                    populateGridView(response.body());
-                }else{
-                    String errorMessage = response.errorBody().toString();
-                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
-                    Toast.makeText(getContext(), "entrou no else do response", Toast.LENGTH_LONG).show();
-                }
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+                pagerAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(Call<List<Evento>> call, Throwable t) {
-                String messageProblem = t.getMessage().toString();
-                Toast.makeText(getContext(), messageProblem, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "entrou no else do Failure", Toast.LENGTH_LONG).show();
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
 
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-
-        return root;
+        return rootView;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
-    }
-
-    private void populateGridView(List<Evento> listaDog){
-        eventsGridView = (GridView) getView().findViewById(R.id.gridEvents);
-        adapter = new AdapterEvents(getContext(), getActivity(), listaDog);
-        eventsGridView.setAdapter(adapter);
+        rootView = null;
     }
 
 }

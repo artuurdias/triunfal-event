@@ -19,7 +19,8 @@ namespace API.Models
         public string nome { get; set; }
         public string tipo { get; set; }
         public string data { get; set; }
-        public string local { get; set; }
+        public string descricao { get; set; }
+        public string endereco { get; set; }
         public string organizador { get; set; }
     }
 
@@ -52,7 +53,7 @@ namespace API.Models
         public string nome { get; set; }
         public string data { get; set; }
         public string descricao { get; set; }
-        public string local { get; set; }
+        public string endereco { get; set; }
         public string usuario { get; set; }
     }
 

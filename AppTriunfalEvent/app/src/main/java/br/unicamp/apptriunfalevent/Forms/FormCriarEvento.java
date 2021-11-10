@@ -137,8 +137,8 @@ public class FormCriarEvento extends AppCompatActivity {
 
                     String codigo = getRandomString(6);
 
-                    Evento evento = new Evento(codigo, edtNome_criarEV.getText().toString(), edtTipo_criarEV.getText().toString(),
-                           edtData_criarEV.getText().toString(), edtLocal_criarEV.getText().toString(), session.getusename());
+                    Evento evento = null;// = new Evento(codigo, edtNome_criarEV.getText().toString(), edtTipo_criarEV.getText().toString(),
+                          // edtData_criarEV.getText().toString(), edtLocal_criarEV.getText().toString(), session.getusename());
 
                     Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
                     Call<Evento> call = service.postEvento(evento);

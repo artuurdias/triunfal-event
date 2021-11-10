@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import br.unicamp.apptriunfalevent.Forms.FormCadastro;
-import br.unicamp.apptriunfalevent.Forms.FormLogin;
+import br.unicamp.apptriunfalevent.Forms.User.FormCadastro;
+import br.unicamp.apptriunfalevent.Forms.Evento.FormEvento;
+import br.unicamp.apptriunfalevent.Forms.User.FormLogin;
 import br.unicamp.apptriunfalevent.R;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -44,7 +45,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btnLogin_welcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(WelcomeActivity.this, FormLogin.class);
+                intent = new Intent(WelcomeActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });

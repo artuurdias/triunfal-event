@@ -94,7 +94,7 @@ public class AdapterEvents extends BaseAdapter {
 
         tvEvento_dialog.setText(evento.getNome());
         tvData_dialog.setText(evento.getData());
-        tvLocal_dialog.setText(evento.getLocal());
+        tvLocal_dialog.setText(evento.getEndereco());
         tvResumo_dialog.setText(evento.getTipo());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

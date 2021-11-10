@@ -13,25 +13,21 @@ create table TipoEvento (
 	exemplos  varchar(200) not null
 )
 
+
 create table Evento (
 	id char(6) primary key,
 	nome varchar(50) not null,
 	tipo varchar(50) not null,
 	data varchar(10) not null,
-	local varchar(50) not null,
+	descricao varchar(100) not null,
+	endereco varchar(300)not null,
 	organizador varchar(25) not null,
 	foreign key (organizador) references Usuario(username),
-	foreign key (tipo)	      references TipoEvento(nome)
+	foreign key (tipo)	      references TipoEvento(nome),
 )
 
 
-/*create table Convidado (
-	idConvidado int identity(1,1) primary key,
-	idEvento char(6) not null,
-	nomeUsuario varchar(25) not null,
-	foreign key (idEvento)    references Evento(id),
-	foreign key (nomeUsuario) references Usuario(username)
-)*/
+
 
 create table Convidado (
 	idEvento char(6) not null,
@@ -45,14 +41,14 @@ create table Convidado (
 create table Lembrete(
 	nome varchar(50),
 	data char(10),
-	local varchar(50) not null,
+	endereco varchar(300)not null,
 	usuario varchar(25),
 	descricao varchar(100),
 	foreign key (usuario) references Usuario(username),
 	primary key(usuario, nome)
 )
 
-create table Feriado(
+create table Feriado (
 	nome varchar(50) primary key,
 	data char(5) not null
 )
@@ -73,6 +69,9 @@ create table Convite(
 	foreign key (nomeUsuario) references Usuario(username),
 	primary key (nomeUsuario, idEvento)
 )
+
+
+
 
 drop table Usuario
 drop table TipoEvento

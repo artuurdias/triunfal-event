@@ -119,7 +119,7 @@ namespace API.Controllers
                 result.nome = evento.nome;
                 result.tipo = evento.tipo;
                 result.data = evento.data;
-                result.local = evento.local;
+                result.endereco = evento.endereco;
                 result.organizador = evento.organizador;
                 
                 await _context.SaveChangesAsync();

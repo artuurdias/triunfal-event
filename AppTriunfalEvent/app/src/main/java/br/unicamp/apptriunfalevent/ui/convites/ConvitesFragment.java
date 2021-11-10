@@ -31,7 +31,6 @@ import retrofit2.Response;
 
 public class ConvitesFragment extends Fragment {
 
-
     private ConvitesVielModel homeViewModel;
     private FragmentConvitesBinding binding;
     private GridView conviteGridView;
@@ -53,17 +52,15 @@ public class ConvitesFragment extends Fragment {
             }
         });
 
-       inicializarTela();
+        inicializarTela();
 
-      /**/  binding.refreshConvite.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        binding.refreshConvite.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 inicializarTela();
                 binding.refreshConvite.setRefreshing(false);
             }
         });
-
-
 
         return root;
     }
@@ -83,6 +80,7 @@ public class ConvitesFragment extends Fragment {
         }
         else{
             exibirErro();
+
         }
     }
 

@@ -1,4 +1,4 @@
-package br.unicamp.apptriunfalevent.Forms;
+package br.unicamp.apptriunfalevent.Forms.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
