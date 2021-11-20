@@ -42,6 +42,7 @@ public class AdapterConvites extends BaseAdapter {
     private Evento evento;
     private Convidado convidado;
     private Convite convite;
+    private GridView oGrid;
 
     private Context mContext;
     private List<Convite> web;
@@ -50,6 +51,7 @@ public class AdapterConvites extends BaseAdapter {
         this.lista = list;
         this.context = context;
         this.app = app;
+        this.oGrid = app.findViewById(R.id.gridConvites);
     }
 
     @Override
@@ -110,7 +112,6 @@ public class AdapterConvites extends BaseAdapter {
             Toast.makeText(context, "Não carregou a imagem", Toast.LENGTH_LONG).show();
         }*/
 
-            app.findViewById(R.id.spinnerTipoEvento_criarEV);
 
 
             tvOK_convite.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +119,6 @@ public class AdapterConvites extends BaseAdapter {
                 public void onClick(View view) {
                     aceitarConvite(position);
                     deletarConvite(position);
-                    //inicializarTela();
-
                 }
             });
 
@@ -127,13 +126,14 @@ public class AdapterConvites extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
                     deletarConvite(position);
+                    notifyDataSetChanged();
                 }
             });
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    exibirEvento(position);
+                    exibirEvento();
                 }
             });
 
@@ -141,31 +141,7 @@ public class AdapterConvites extends BaseAdapter {
     }
 
 
-    private void exibirEvento(int pos) {
-
-
-        convite = lista.get(pos);
-
-        Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
-        Call<Evento> call = service.getEvento(convite.getIdEvento());
-
-        call.enqueue(new Callback<Evento>() {
-            @Override
-            public void onResponse(Call<Evento> call, Response<Evento> response) {
-
-                if (response.isSuccessful()) {
-                    evento = (Evento) response.body();
-                } else {
-                    Toast.makeText(context, "ERRO EVENTO!", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Evento> call, Throwable t) {
-                Toast.makeText(context, "ERRO EVENTO FAILURE!", Toast.LENGTH_LONG).show();
-            }
-        });
-
+    private void exibirEvento() {
         //LayoutInflater é utilizado para inflar nosso layout em uma view.
         //-pegamos nossa instancia da classe
         LayoutInflater li = app.getLayoutInflater();
@@ -177,12 +153,17 @@ public class AdapterConvites extends BaseAdapter {
         TextView tvEvento_dialog  = view.findViewById(R.id.tvEvento_dialog);
         TextView tvData_dialog    = view.findViewById(R.id.tvData_dialog);
         TextView tvLocal_dialog   = view.findViewById(R.id.tvLocal_dialog);
-        TextView tvResumo_dialog  = view.findViewById(R.id.tvResumo_dialog);
+        TextView tvResumo_dialog  = view.findViewById(R.id.tvDescricao_dialog);
+        TextView tvOrganizador_dialog  = view.findViewById(R.id.tvOrganizador_dialog);
+        TextView tvTipoEvento_dialog  = view.findViewById(R.id.tvTipoEvento_dialog);
+
 
         tvEvento_dialog.setText(evento.getNome());
         tvData_dialog.setText(evento.getData());
         tvLocal_dialog.setText(evento.getEndereco());
-        tvResumo_dialog.setText(evento.getTipo());
+        tvResumo_dialog.setText(evento.getDescricao());
+        tvOrganizador_dialog.setText(evento.getOrganizador());
+        tvTipoEvento_dialog.setText(evento.getTipo());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Informações do evento:");
@@ -214,6 +195,21 @@ public class AdapterConvites extends BaseAdapter {
                 Toast.makeText(context, "Erro de conexão com API", Toast.LENGTH_LONG).show();
             }
         });
+
+        lista.remove(pos);
+        if (lista.size() == 0) {
+            oGrid.setAdapter(null);
+            exibirErro();
+        }
+        else {
+            try {
+                AdapterConvites adapter = (AdapterConvites) this.clonee();
+                oGrid.setAdapter(adapter);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -247,7 +243,6 @@ public class AdapterConvites extends BaseAdapter {
                 Toast.makeText(context, "Erro de conexão com API", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
 
@@ -314,5 +309,27 @@ public class AdapterConvites extends BaseAdapter {
                 //.setNegativeButton(android.R.string.no, null)
                 .setIcon(R.drawable.ic_baseline_warning_24)
                 .show();
+    }
+
+    private Object clonee ()
+    {
+        AdapterConvites ret = null;
+
+        try
+        {
+            ret = new AdapterConvites(this);
+        }
+        catch (Exception erro)
+        {}
+
+        return ret;
+    }
+
+    public AdapterConvites(AdapterConvites modelo) throws Exception
+    {
+        this.lista = modelo.lista;
+        this.context = modelo.context;
+        this.app = modelo.app;
+        this.oGrid = modelo.oGrid;
     }
 }

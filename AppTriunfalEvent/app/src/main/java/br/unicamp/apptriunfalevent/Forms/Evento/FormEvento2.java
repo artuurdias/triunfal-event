@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -37,9 +38,10 @@ import java.util.Locale;
 
 import br.unicamp.apptriunfalevent.APIconfig.*;
 
-import br.unicamp.apptriunfalevent.Models.Evento;
+import br.unicamp.apptriunfalevent.Models.*;
 import br.unicamp.apptriunfalevent.R;
 import br.unicamp.apptriunfalevent.databinding.ActivityFormEvento2Binding;
+import br.unicamp.apptriunfalevent.ui.Activities.*;
 
 public class FormEvento2 extends FragmentActivity implements OnMapReadyCallback {
 
@@ -77,37 +79,46 @@ public class FormEvento2 extends FragmentActivity implements OnMapReadyCallback 
         tvLogradouro = (TextView) findViewById(R.id.tvInfoMaps_mapaEvento);
         edtEndereco = (EditText) findViewById(R.id.edtEndereco_mapaEvento);
 
-        binding.edtEnderecoMapaEvento.addTextChangedListener(new TextWatcher() {
+
+        edtEndereco.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN){
+                    if (event.getRawX() >= edtEndereco.getTotalPaddingEnd()){
+                        setEdtEndereco(binding.edtEnderecoMapaEvento.getText().toString());
+                        binding.tvInfoMapsMapaEvento.setText(evento.getEndereco());                    }
+                    return false;
+                }
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+                return false;
             }
         });
 
 
-        binding.btnPesquisarMapaEvento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setEdtEndereco(binding.edtEnderecoMapaEvento.getText().toString());
-                binding.tvInfoMapsMapaEvento.setText(evento.getEndereco());
-            }
-        });
 
-        binding.btnProxMapaEvento.setOnClickListener(new View.OnClickListener() {
+        binding.btnProxMapaEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 alertaValidacaoEndereco();
-                proxTela();
+            }
+        });
+
+
+        binding.btnBackMapaEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FormEvento2.this, FormEvento.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+
+        binding.btnHomeMapaEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FormEvento2.this, HomeActivity.class);
+                finish();
+                startActivity(intent);
             }
         });
 
@@ -118,13 +129,12 @@ public class FormEvento2 extends FragmentActivity implements OnMapReadyCallback 
 
         new AlertDialog.Builder(FormEvento2.this)
                 .setTitle("Confirmação de endereço")
-                .setMessage(evento.toString())
+                .setMessage(evento.getEndereco())
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // Continue with delete operation
-                        Toast.makeText(FormEvento2.this, "MUDOU TELA", Toast.LENGTH_SHORT).show();
+                        proxTela();
                     }
-                }).setCancelable(true)
+                })
                 .setIcon(R.drawable.ic_baseline_warning_24)
                 .show();
 
@@ -136,7 +146,6 @@ public class FormEvento2 extends FragmentActivity implements OnMapReadyCallback 
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -145,9 +154,9 @@ public class FormEvento2 extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public void onLocationChanged(Location location) {
 
+                LatLng latLng = new LatLng( location.getLatitude(), location.getLongitude());
                 Log.d("Localizacao", "onLocationChanged: " + location.toString() );
-                String stringEndereco = "Avenida Paulista, 1374 - Bela Vista, São Paulo - SP";
-                setEdtEndereco(stringEndereco);
+                setEdtEndereco(latLng);
             }
 
             @Override
@@ -165,7 +174,6 @@ public class FormEvento2 extends FragmentActivity implements OnMapReadyCallback 
 
             }
         };
-
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
@@ -209,7 +217,7 @@ public class FormEvento2 extends FragmentActivity implements OnMapReadyCallback 
                 mMap.addMarker(new MarkerOptions().position(localUsuario).title("Meu local"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(localUsuario, 18));
                 evento.setEndereco(endereco.getAddressLine(0));
-                //edtEndereco.setText(evento.getEndereco());
+                binding.tvInfoMapsMapaEvento.setText(evento.getEndereco());
                 Log.d("local", "LOCAL DO EVENTO: " + endereco.getAddressLine(0));
                 Toast.makeText(FormEvento2.this, endereco.toString(), Toast.LENGTH_LONG);
             }
@@ -234,7 +242,7 @@ public class FormEvento2 extends FragmentActivity implements OnMapReadyCallback 
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLong, 18));
                 Address endereco = listaEndereco.get(0);
                 evento.setEndereco(endereco.getAddressLine(0));
-                //edtEndereco.setText(evento.getEndereco());
+                binding.tvInfoMapsMapaEvento.setText(evento.getEndereco());
                 Log.d("local", "LOCAL DO EVENTO: " + endereco.getAddressLine(0));
                 Toast.makeText(FormEvento2.this, endereco.toString(), Toast.LENGTH_LONG);
 
@@ -295,16 +303,7 @@ public class FormEvento2 extends FragmentActivity implements OnMapReadyCallback 
     }
 
     private void proxTela(){
-        /*intent = getIntent();
-        Aluno objAluno = (Aluno) intent.getSerializableExtra("sessaoEmail");
 
-        objAluno.setEmail(edtEmail.getText().toString());
-        objAluno.setSenha(edtSenha.getText().toString());
-
-        Intent intent = new Intent(Cadastro5.this, MainActivity.class);
-        startActivity(intent);
-
-        intent = new Intent(MapsActivity.this, Cadastro3.class);*/
 
         intent = new Intent(FormEvento2.this, FormEvento3.class);
         intent.putExtra("sessaoMaps", (Serializable) evento);

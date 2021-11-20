@@ -39,11 +39,27 @@
         android:text="Local:" />
 
     <TextView
-        android:id="@+id/tvResumo_dialog"
+        android:id="@+id/tvDescricao_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textAlignment="center"
         android:text="Descrição:" />
+
+    <TextView
+        android:id="@+id/tvOrganizador_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textAlignment="center"
+        android:text="Organizador:" />
+
+    <TextView
+        android:id="@+id/tvTipoEvento_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textAlignment="center"
+        android:text="Categoria do evento:" />
 
 </LinearLayout>

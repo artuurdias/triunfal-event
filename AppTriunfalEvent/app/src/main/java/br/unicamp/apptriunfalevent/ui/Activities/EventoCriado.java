@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import br.unicamp.apptriunfalevent.Forms.FormConvidar;
 import br.unicamp.apptriunfalevent.R;
 
 public class EventoCriado extends AppCompatActivity {
@@ -27,14 +28,14 @@ public class EventoCriado extends AppCompatActivity {
         btnVoltarHome_evCriado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(EventoCriado.this, IngressarEvento.class));
+                startActivity(new Intent(EventoCriado.this, HomeActivity.class));
             }
         });
 
         btnConvidarAmigos_evCriado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // startActivity(new Intent(EventoCriado.this, ConvidarAmigos.class));
+                 startActivity(new Intent(EventoCriado.this, FormConvidar.class));
             }
         });
 

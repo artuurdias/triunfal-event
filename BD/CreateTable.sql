@@ -70,7 +70,7 @@ create table Convite(
 	primary key (nomeUsuario, idEvento)
 )
 
-
+delete from Evento where id = 'E0GMVT'
 
 
 drop table Usuario

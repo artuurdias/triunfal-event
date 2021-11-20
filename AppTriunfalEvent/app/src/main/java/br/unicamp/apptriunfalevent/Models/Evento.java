@@ -23,12 +23,15 @@ public class Evento implements Serializable {
 
     public Evento(String id, String nome, String tipo, String data, String descricao , String endereco, String organizador) {
         this.id = id;
-        this.nome = nome;
+        this.nome = nome; 
         this.tipo = tipo;
         this.data = data;
         this.endereco = endereco;
         this.descricao = descricao;
         this.organizador = organizador;
+    }
+
+    public Evento() {
     }
 
     public String getId() {

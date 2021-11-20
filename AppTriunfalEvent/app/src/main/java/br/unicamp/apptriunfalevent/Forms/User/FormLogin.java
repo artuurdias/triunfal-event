@@ -12,11 +12,9 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
-import br.unicamp.apptriunfalevent.APIconfig.RetrofitConfig;
-import br.unicamp.apptriunfalevent.APIconfig.Service;
-import br.unicamp.apptriunfalevent.APIconfig.Session;
-import br.unicamp.apptriunfalevent.ui.Activities.HomeActivity;
-import br.unicamp.apptriunfalevent.Models.Usuario;
+import br.unicamp.apptriunfalevent.APIconfig.*;
+import br.unicamp.apptriunfalevent.ui.Activities.*;
+import br.unicamp.apptriunfalevent.Models.*;
 import br.unicamp.apptriunfalevent.R;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -95,7 +93,6 @@ public class FormLogin extends AppCompatActivity {
                         }
                         else{
                             Toast.makeText(FormLogin.this, "Usuario inexistente!", Toast.LENGTH_LONG).show();
-
                         }
                     }
                     else

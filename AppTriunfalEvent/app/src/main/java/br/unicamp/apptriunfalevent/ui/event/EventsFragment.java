@@ -37,7 +37,7 @@ public class EventsFragment extends Fragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private TabItem tab1, tab2, tab3;
+    private TabItem tab1, tab2, tab3, tab4;
     private PagerAdapter pagerAdapter;
     private View rootView;
 
@@ -49,9 +49,11 @@ public class EventsFragment extends Fragment {
 
         tabLayout = (TabLayout) rootView.findViewById(R.id.tabLayout);
 
-        tab1 =  (TabItem) rootView.findViewById(R.id.eventAtuais);
-        tab2 = (TabItem) rootView.findViewById(R.id.eventDisponiveis);
-        tab3 = (TabItem) rootView.findViewById(R.id.eventPassados);
+        tab1 =  (TabItem) rootView.findViewById(R.id.eventOrganiza);
+        tab2 =  (TabItem) rootView.findViewById(R.id.eventPassado);
+        tab3 = (TabItem) rootView.findViewById(R.id.eventLivre);
+        tab4 = (TabItem) rootView.findViewById(R.id.eventParticipa);
+
 
         viewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
 

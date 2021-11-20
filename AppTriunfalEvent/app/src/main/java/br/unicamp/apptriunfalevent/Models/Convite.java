@@ -2,24 +2,15 @@ package br.unicamp.apptriunfalevent.Models;
 
 public class Convite {
 
-    private int id;
     private String data, mensagem, idEvento, nomeUsuario;
 
-    public Convite(int id, String data, String mensagem, String idEvento, String nomeUsuario) {
-        this.id = id;
+    public Convite(String nomeUsuario, String idEvento,  String mensagem,String data  ) {
         this.data = data;
         this.mensagem = mensagem;
         this.idEvento = idEvento;
         this.nomeUsuario = nomeUsuario;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getData() {
         return data;

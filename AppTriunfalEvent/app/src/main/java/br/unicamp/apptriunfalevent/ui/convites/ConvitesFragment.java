@@ -44,14 +44,6 @@ public class ConvitesFragment extends Fragment {
         binding = FragmentConvitesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        binding.fbHomeConvite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-
         inicializarTela();
 
         binding.refreshConvite.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -74,13 +66,13 @@ public class ConvitesFragment extends Fragment {
     public void populateGridView(List<Convite> lista){
         conviteGridView = (GridView) getView().findViewById(R.id.gridConvites);
 
-        if(lista.size() > 0) {
+        if (lista.size() > 0) {
             adapter = new AdapterConvites(getContext(), getActivity(), lista);
             conviteGridView.setAdapter(adapter);
         }
-        else{
+        else {
+            conviteGridView.setAdapter(null);
             exibirErro();
-
         }
     }
 

@@ -45,7 +45,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btnLogin_welcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(WelcomeActivity.this, HomeActivity.class);
+                intent = new Intent(WelcomeActivity.this, FormLogin.class);
                 startActivity(intent);
             }
         });

@@ -2,22 +2,19 @@ package br.unicamp.apptriunfalevent.ui.event;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 import br.unicamp.apptriunfalevent.Models.Evento;
 import br.unicamp.apptriunfalevent.R;
 
-public class AdapterEvents extends BaseAdapter {
+public class AdapterEventsPassado extends BaseAdapter {
 
     private List<Evento> lista;
     private Context context;
@@ -25,7 +22,7 @@ public class AdapterEvents extends BaseAdapter {
     private Activity app;
     private Evento evento;
 
-    public AdapterEvents(Context context, Activity app, List<Evento>list){
+    public AdapterEventsPassado(Context context, Activity app, List<Evento>list){
         this.lista = list;
         this.context = context;
         this.app = app;
@@ -50,16 +47,17 @@ public class AdapterEvents extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
 
         if(view == null){
-            view = LayoutInflater.from(context).inflate(R.layout.adapter_events, parent,false);
+            view = LayoutInflater.from(context).inflate(R.layout.adapter_events_pass, parent,false);
         }
 
-        TextView tvEventoNome = view.findViewById(R.id.tvEventoNome_grid);
-        TextView tvEventoData = view.findViewById(R.id.tvEventoData_grid);
+        TextView tvEventoNome = view.findViewById(R.id.tvEventoNome_gridPass);
+        TextView tvEventoData = view.findViewById(R.id.tvEventoData_gridPass);
 
         evento = lista.get(position);
 
         tvEventoNome.setText(evento.getNome());
         tvEventoData.setText(evento.getData());
+
 
        /* if((dog.getImagem() != null) && (dog.getImagem().length()>0)){
             Picasso.get().load(dog.getImagem()).into(dogImageView);
@@ -74,6 +72,7 @@ public class AdapterEvents extends BaseAdapter {
                 exibirEvento();
             }
         });
+
         return view;
     }
 
@@ -90,12 +89,17 @@ public class AdapterEvents extends BaseAdapter {
         TextView tvEvento_dialog  = view.findViewById(R.id.tvEvento_dialog);
         TextView tvData_dialog    = view.findViewById(R.id.tvData_dialog);
         TextView tvLocal_dialog   = view.findViewById(R.id.tvLocal_dialog);
-        TextView tvResumo_dialog  = view.findViewById(R.id.tvResumo_dialog);
+        TextView tvResumo_dialog  = view.findViewById(R.id.tvDescricao_dialog);
+        TextView tvOrganizador_dialog  = view.findViewById(R.id.tvOrganizador_dialog);
+        TextView tvTipoEvento_dialog  = view.findViewById(R.id.tvTipoEvento_dialog);
+
 
         tvEvento_dialog.setText(evento.getNome());
         tvData_dialog.setText(evento.getData());
         tvLocal_dialog.setText(evento.getEndereco());
-        tvResumo_dialog.setText(evento.getTipo());
+        tvResumo_dialog.setText(evento.getDescricao());
+        tvOrganizador_dialog.setText(evento.getOrganizador());
+        tvTipoEvento_dialog.setText(evento.getTipo());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Informações do evento:");

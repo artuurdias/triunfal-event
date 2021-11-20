@@ -43,8 +43,8 @@ delete from TipoEvento where id >= 0
 
 insert into Evento values('JDN764', 'Churrascão do Fabio', 'Evento social', '23/09/2021', 'Festa de comemoração de 17 anos', 'Rua Amadeu Gardini 249', 'Fabiao')
 insert into Evento values('298GCV', 'PD Party 2022', 'Evento social', '12/04/2021', 'Chácara Belo Horizonte', 'Fabriciao')
-insert into Evento values('DCGFR4', 'Gincana COTUCA', 'Evento esportivo', '18/12/2021', 'Colégio Técnico de Campinas', 'Arturzao')
-insert into Evento values('HDBNWU', 'Formatura 2021', 'Evento social', '15/12/2021', 'COTUCA', 'Fabriciao')
+insert into Evento values('DCGFR4', 'Gincana COTUCA', 'Evento esportivo', '18/12/2021', 'Festa de comemoração do fim da pandemia', 'Colégio Técnico de Campinas', 'Arturzao')
+insert into Evento values('HDBNWU', 'Formatura 2022', 'Evento social', '15/12/2022', 'Festa de formatura de RA20', 'COTUCA', 'Arturzao')
 
 select * from Evento
 
@@ -52,10 +52,13 @@ delete from Evento where id  <> ' ';
 
 /**********************************************************************************************************************/
 
-insert into Convidado values('JDN764', 'Arturzao')
-insert into Convidado values('298GCV', 'Arturzao')
+insert into Convidado values('JDN764', 'Fabriciao')
+insert into Convidado values('298GCV', 'Fabiao')
+insert into Convidado values('VT18HV', 'Fabiao')
+insert into Convidado values('HDBNWU', 'Fabriciao')
 
 select * from Convidado
+delete from Convidado where idEvento = 'DCGFR4'
 delete from Convidado where 1 >= 0
 
 /**********************************************************************************************************************/
@@ -101,11 +104,11 @@ DBCC CHECKIDENT(Dica, RESEED, 0)
 
 /**********************************************************************************************************************/
 
-insert into Convite values('Fabriciao', 'JDN764', 'Você está convidado!', '02/04' );
-insert into Convite values('Arturzao', 'JDN764', 'Você está convidado!', '02/04' );
+insert into Convite values('Fabriciao', 'JDN764', 'Você está convidado!', '02/04/2022' );
+insert into Convite values('Arturzao', 'JDN764', 'Você está convidado!', '02/04/2022' );
 insert into Convite values('Arturzao', '298GCV', 'Você está convidado!', '02/04' );
 insert into Convite values('Fabiao', 'JDN764', 'Você está convidado!', '02/04' );
-insert into Convite values('Arturzao', 'HDBNWU', 'Você está convidado!', '02/04' );
+insert into Convite values('Fabriciao', 'DCGFR4', 'Você está convidado!', '02/04' );
 
 select * from Convite
 delete from Convite where id >= 0

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Forms.Evento.FormEvento4">
+
+
+
+
+    <ImageView
+        android:id="@+id/logo_confirmeEvent"
+        android:layout_width="107dp"
+        android:layout_height="93dp"
+        android:src="@drawable/icone_logo"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvConferir_confirmeEvent"
+        android:text="Confira os dados do evento"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo_confirmeEvent"
+        />
+
+    <View
+        android:id="@+id/containerComponents_confirmeEvent"
+        style="@style/ContainerComponents"
+        android:layout_height="490dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvConferir_confirmeEvent" />
+
+    <TextView
+        android:id="@+id/tvNomeEvento_confirmeEvent"
+        style="@style/Edit_Text"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:drawableEnd="@drawable/ic_baseline_edit_24"
+        android:hint="Nome evento"
+        android:textSize="18dp"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents_confirmeEvent"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_confirmeEvent"
+        app:layout_constraintTop_toTopOf="@+id/containerComponents_confirmeEvent" />
+
+
+
+    <TextView
+        android:id="@+id/tvDescricaoEvento_confirmeEvent"
+        style="@style/Edit_Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:singleLine="false"
+        android:maxLines="5"
+        android:maxLength="100"
+        android:textSize="18dp"
+        android:hint="\n\nDescreva brevemente seu evento\n\n\n"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents_confirmeEvent"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_confirmeEvent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNomeEvento_confirmeEvent"
+        />
+
+    <TextView
+        android:id="@+id/tvDataEvento_confirmeEvent"
+        style="@style/Edit_Text"
+        android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
+        android:textAlignment="center"
+        android:hint="Data do evento"
+        android:textSize="18dp"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents_confirmeEvent"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_confirmeEvent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescricaoEvento_confirmeEvent"
+        />
+
+
+    <TextView
+        android:id="@+id/tvEditEndereco_confirmeEvent"
+        style="@style/Edit_Text"
+        android:maxLength="300"
+        android:singleLine="true"
+        android:textSize="18dp"
+        android:hint="Endereço do evento"
+        android:textAlignment="center"
+        android:drawableEnd="@drawable/ic_baseline_location_on_24"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents_confirmeEvent"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_confirmeEvent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDataEvento_confirmeEvent"
+
+        />
+
+    <TextView
+        android:id="@+id/tvCategoria_confirmeEvent"
+        style="@style/Edit_Text"
+        android:maxLength="300"
+        android:singleLine="true"
+        android:textSize="18dp"
+        android:hint="Categoria do evento"
+        android:textAlignment="center"
+        android:drawableEnd="@drawable/ic_baseline_search_24"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents_confirmeEvent"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_confirmeEvent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditEndereco_confirmeEvent"
+
+        />
+    <Button
+        android:id="@+id/btnConfirmar_confirmeEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/green"
+        android:drawableEnd="@drawable/ic_baseline_playlist_add_check_24"
+        android:text="Criar evento"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnHome_confirmeEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/brow_light"
+        android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
+        android:text="Voltar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

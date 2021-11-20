@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.PagerAdapter;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
@@ -21,11 +20,13 @@ public class PageAdapter extends FragmentPagerAdapter {
 
         switch(position){
             case 0:
-                return new EventAtivos();
+                return new EventoOrganiza();
             case 1:
-                return new EventDisponiveis();
+                return new EventPassado();
             case 2:
-                return new EventPassados();
+                return new EventoLivre();
+            case 3:
+                return new EventParticipa();
             default:
                 return null;
         }

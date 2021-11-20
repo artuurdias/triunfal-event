@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.unicamp.apptriunfalevent" >
+    package="br.unicamp.apptriunfalevent">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -15,9 +15,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppTriunfalEvent" >
+        android:theme="@style/Theme.AppTriunfalEvent">
         <activity
-            android:name=".Forms.Evento.FormEvento3"
+            android:name=".Forms.Evento.FormEvento4"
+            android:exported="true" />
+        <activity
+            android:name=".ui.Activities.EventoInfoConvidados"
             android:exported="true" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -31,6 +34,26 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".ui.Activities.EventoInfoMaps"
+            android:exported="true"
+            android:label="@string/title_activity_evento_maps_info" />
+        <activity
+            android:name=".ui.Activities.EventoInfo"
+            android:exported="true" />
+        <activity
+            android:name=".ui.Activities.EventoEditMaps"
+            android:exported="true"
+            android:label="@string/title_activity_evento_edit_maps" />
+        <activity
+            android:name=".ui.Activities.EventoEditInfo"
+            android:exported="true" />
+        <activity
+            android:name=".Forms.Evento.FormEvento3"
+            android:exported="true" />
+        <activity
+            android:name=".Forms.FormConvidar"
+            android:exported="true" />
         <activity
             android:name=".Forms.Evento.FormEvento2"
             android:exported="true"
@@ -57,7 +80,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.Activities.WelcomeActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

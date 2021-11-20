@@ -18,7 +18,19 @@ tools:context=".ui.calendario.CalendarioFragment">
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
+    android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
+    android:dateTextAppearance="@style/CalenderViewDateCustomText"
     />
+<!--
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/CalenderViewCustom"
+        android:dateTextAppearance="@style/CalenderViewDateCustomText"
+        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"/>
+
+    -->
 
 <TextView
     android:id="@+id/tvAgenda"

@@ -7,40 +7,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Forms.Evento.FormEvento2"
+    android:background="@drawable/background"
     >
 
-
+    <TextView
+        android:id="@+id/tvLocalll_formEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Endereço do evento"
+        android:textAlignment="center"
+        android:textColor="@color/brow_dark"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edtEndereco_mapaEvento"
         style="@style/Edit_Text"
         android:maxLength="300"
-        android:drawableRight="@drawable/ic_baseline_search_24"
+        android:singleLine="true"
+        android:inputType="text"
+        android:drawableEnd="@drawable/ic_baseline_search_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnPesquisar_mapaEvento"
-        style="@style/Button"
-        android:text="Pesquisar"
-        android:textSize="20dp"
-        android:background="@drawable/background"
-        android:drawableRight="@drawable/ic_baseline_search_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtEndereco_mapaEvento" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLocalll_formEvento"
+        />
 
     <TextView
+
         style="@style/TextView_Profile"
         android:id="@+id/tvInfoMaps_mapaEvento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:maxLength="300"
         android:textAlignment="center"
+        android:maxLines="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPesquisar_mapaEvento" />
+        app:layout_constraintTop_toBottomOf="@+id/edtEndereco_mapaEvento" />
 
     <fragment
         android:id="@+id/map"
@@ -54,7 +62,7 @@
         tools:context=".Forms.Evento.FormEvento2" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnProx_mapaEvento"
+        android:id="@+id/btnProx_mapaEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -62,10 +70,37 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        android:id="@+id/btnBack_mapaEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/brow_light"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+
+        />
+
+    <Button
+        android:id="@+id/btnHome_mapaEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/brow_light"
+        android:drawableEnd="@drawable/ic_baseline_home_24"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnProx_mapaEvent"
+        app:layout_constraintStart_toEndOf="@+id/btnBack_mapaEvent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

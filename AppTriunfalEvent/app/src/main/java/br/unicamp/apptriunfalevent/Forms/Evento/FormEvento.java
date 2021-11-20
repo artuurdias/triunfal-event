@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -17,20 +18,24 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Locale;
 
 import br.unicamp.apptriunfalevent.APIconfig.Data;
 import br.unicamp.apptriunfalevent.APIconfig.Session;
 import br.unicamp.apptriunfalevent.Models.Evento;
 import br.unicamp.apptriunfalevent.R;
+import br.unicamp.apptriunfalevent.ui.Activities.HomeActivity;
 
 public class FormEvento extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private TextView tvDataEvento;
-    private FloatingActionButton btnProx;
+    private FloatingActionButton btnProx, btnBack;
+    private Button btnHome;
     private Session session;
     private EditText edtNome, edtDescricao;
-    private ProgressBar progressBar;
     private int currentProgress = 0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +43,25 @@ public class FormEvento extends AppCompatActivity implements DatePickerDialog.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_evento);
 
+        Locale.setDefault(new Locale("pt", "BR"));
 
-        edtDescricao = (EditText) findViewById(R.id.edtDescricaoEvento_formEvento);
-        edtNome = (EditText) findViewById(R.id.edtNomeEvento_formEvento);
-        tvDataEvento         = (TextView)    findViewById(R.id.tvDataEvento_formEvento);
+
+        edtDescricao    = (EditText) findViewById(R.id.edtDescricaoEvento_formEvento);
+        edtNome         = (EditText) findViewById(R.id.edtNomeEvento_formEvento);
+        tvDataEvento    = (TextView)    findViewById(R.id.tvDataEvento_formEvento);
         btnProx         = (FloatingActionButton)    findViewById(R.id.btnProx_formEvent);
+        btnBack         = (FloatingActionButton)    findViewById(R.id.btnBack_formEvent);
+        btnHome         = (Button)    findViewById(R.id.btnHome_formEvent);
+        session         = new Session(this);
 
+        Data dataAtual = null;
+        try {
+            dataAtual = new Data();
+            tvDataEvento.setText(dataAtual.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        session = new Session(this);
 
 
         tvDataEvento.setOnClickListener(new View.OnClickListener() {
@@ -70,10 +86,29 @@ public class FormEvento extends AppCompatActivity implements DatePickerDialog.On
             }
         });
 
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(FormEvento.this, HomeActivity.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(FormEvento.this, HomeActivity.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void showCalendar(){
-
 
         DatePickerDialog calendario = new DatePickerDialog(this, this,
                 Calendar.getInstance().get(Calendar.YEAR),

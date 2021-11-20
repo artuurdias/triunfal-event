@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:background="@drawable/background"
+android:layout_height="match_parent"
+tools:context=".ui.Activities.EventoInfo">
+
+
+
+<LinearLayout
+    android:id="@+id/linearTopo_infoEvent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:cardElevation="100dp"
+    android:layout_margin="10dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    >
+
+    <ImageView
+        android:id="@+id/logo_infoEvent"
+        android:layout_width="107dp"
+        android:layout_height="93dp"
+        android:src="@drawable/icone_logo"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvNomeEvento_infoEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:layout_gravity="center"
+        android:text="Nome Evento"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_weight="2"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_editEvent"/>
+
+</LinearLayout>
+
+<View
+    android:id="@+id/containerComponents_infoEvent"
+    style="@style/ContainerComponents"
+    android:layout_height="500dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/linearTopo_infoEvent" />
+
+
+<TextView
+    android:id="@+id/tvDescricaoEvento_infoEvent"
+    style="@style/Edit_Text"
+    android:gravity="center"
+    android:textAlignment="center"
+    android:singleLine="false"
+    android:maxLines="5"
+    android:maxLength="100"
+    android:textSize="18sp"
+    android:hint="\n\nDescrição\n\n\n"
+    android:inputType="textMultiLine"
+    android:textColorHint="@color/grey"
+    app:layout_constraintEnd_toEndOf="@+id/containerComponents_infoEvent"
+    app:layout_constraintStart_toStartOf="@+id/containerComponents_infoEvent"
+    app:layout_constraintTop_toTopOf="@+id/containerComponents_infoEvent"
+    />
+
+<TextView
+    android:id="@+id/tvDataEvento_infoEvent"
+    style="@style/Edit_Text"
+    android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
+    android:textAlignment="center"
+    android:hint="Data"
+    android:textSize="18dp"
+    android:textColorHint="@color/grey"
+    app:layout_constraintEnd_toEndOf="@+id/containerComponents_infoEvent"
+    app:layout_constraintStart_toStartOf="@+id/containerComponents_infoEvent"
+    app:layout_constraintTop_toBottomOf="@+id/tvDescricaoEvento_infoEvent"
+
+    />
+
+
+<TextView
+    android:id="@+id/tvEndereco_infoEvent"
+    style="@style/Edit_Text"
+    android:maxLength="300"
+    android:singleLine="true"
+    android:textSize="18dp"
+    android:hint="Endereço"
+    android:textAlignment="center"
+    android:drawableEnd="@drawable/ic_baseline_location_on_24"
+    app:layout_constraintEnd_toEndOf="@+id/containerComponents_infoEvent"
+    app:layout_constraintStart_toStartOf="@+id/containerComponents_infoEvent"
+    app:layout_constraintTop_toBottomOf="@+id/tvDataEvento_infoEvent"
+
+    />
+
+
+    <TextView
+        android:id="@+id/tvTipoEvento_infoEvent"
+        style="@style/Edit_Text"
+        android:maxLength="300"
+        android:singleLine="true"
+        android:textSize="18dp"
+        android:hint="Categoria"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:drawableEnd="@drawable/ic_baseline_playlist_add_check_24"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents_infoEvent"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_infoEvent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEndereco_infoEvent"
+        />
+
+    <TextView
+        android:id="@+id/tvOrganizador_infoEvent"
+        style="@style/Edit_Text"
+        android:maxLength="300"
+        android:singleLine="true"
+        android:textSize="18dp"
+        android:hint="Organizador"
+        android:textAlignment="center"
+        android:drawableEnd="@drawable/ic_baseline_person_search_24"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents_infoEvent"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents_infoEvent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTipoEvento_infoEvent"
+        />
+
+    <Button
+        android:id="@+id/btnProx_infoEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/brow_light"
+        android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"
+        android:text="Localização no mapa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnHome_infoEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/brow_light"
+        android:drawableEnd="@drawable/ic_baseline_home_24"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

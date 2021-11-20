@@ -63,6 +63,26 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("list/{idEvento}")]
+        public ActionResult<List<Convidado>> GetByIdEvento(string idEvento)
+        {
+            try
+            {
+                //var convite = _context.Convite.ToList().Find();
+                var convites = _context.Convidado.ToList().FindAll(i => i.idEvento == idEvento);
+          
+
+                if (convites == null)
+                    return NotFound();
+
+                return convites;
+            }
+            catch
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados. ");
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult> PostConvidado(Convidado convidado)
         {

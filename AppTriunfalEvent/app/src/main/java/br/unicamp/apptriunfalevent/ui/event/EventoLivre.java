@@ -1,5 +1,7 @@
 package br.unicamp.apptriunfalevent.ui.event;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -22,46 +25,28 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EventAtivos extends Fragment {
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
+public class EventoLivre extends Fragment {
 
     private GridView eventsGridView;
     private EventsVielModel homeViewModel;
     private FragmentEventsBinding binding;
-    private AdapterEvents adapter;
+    private AdapterEventsLivre adapter;
 
-    public EventAtivos() {
+    public EventoLivre() {
         // Required empty public constructor
-    }
-
-    public static EventAtivos newInstance(String param1, String param2) {
-        EventAtivos fragment = new EventAtivos();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root =  inflater.inflate(R.layout.fragment_event_ativos, container, false);
+        View root =  inflater.inflate(R.layout.fragment_event_livre, container, false);
         //Download JSON via Retrofit
         Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
 
@@ -69,13 +54,12 @@ public class EventAtivos extends Fragment {
 
         //Pegar a rota do Json
 
-        Call<List<Evento>> call = service.getEventosUser(session.getusename());
+        Call<List<Evento>> call = service.getEventosDisp(session.getusename());
         call.enqueue(new Callback<List<Evento>>() {
             @Override
             public void onResponse(Call<List<Evento>> call, Response<List<Evento>> response) {
 
                 if(response.isSuccessful()){
-                    Toast.makeText(getContext(), "deu certo", Toast.LENGTH_LONG).show();
                     populateGridView(response.body());
                 }else{
                     String errorMessage = response.errorBody().toString();
@@ -94,9 +78,32 @@ public class EventAtivos extends Fragment {
         return root;
     }
 
-    private void populateGridView(List<Evento> listaDog){
-        eventsGridView = (GridView) getView().findViewById(R.id.gridEvents);
-        adapter = new AdapterEvents(getContext(), getActivity(), listaDog);
-        eventsGridView.setAdapter(adapter);
+    private void populateGridView(List<Evento> lista){
+        eventsGridView = (GridView) getView().findViewById(R.id.gridEventsLivre);
+
+        if (lista.size() > 0) {
+            adapter = new AdapterEventsLivre(getContext(), getActivity(), lista);
+            eventsGridView.setAdapter(adapter);
+        }
+        else {
+            eventsGridView.setAdapter(null);
+            //exibirErro();
+        }
     }
+
+
+    private void exibirErro() {
+
+        new AlertDialog.Builder(getContext())
+                .setTitle("Sem eventos!")
+                .setMessage("Você não há eventos para participar no momento, caso um seja criado você o verá aqui.")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                //.setNegativeButton(android.R.string.no, null)
+                .setIcon(R.drawable.ic_baseline_warning_24)
+                .show();
+    }
+
 }

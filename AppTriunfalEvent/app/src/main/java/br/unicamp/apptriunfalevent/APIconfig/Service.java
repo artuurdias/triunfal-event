@@ -2,16 +2,9 @@ package br.unicamp.apptriunfalevent.APIconfig;
 
 import java.util.List;
 
-import br.unicamp.apptriunfalevent.Models.Convidado;
-import br.unicamp.apptriunfalevent.Models.Convite;
-import br.unicamp.apptriunfalevent.Models.Dica;
-import br.unicamp.apptriunfalevent.Models.Evento;
-import br.unicamp.apptriunfalevent.Models.Feriado;
-import br.unicamp.apptriunfalevent.Models.Lembrete;
-import br.unicamp.apptriunfalevent.Models.TipoEvento;
-import br.unicamp.apptriunfalevent.Models.Usuario;
+import br.unicamp.apptriunfalevent.Models.*;
 import retrofit2.Call;
-import retrofit2.http.Body;
+import retrofit2.http.*;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -21,7 +14,7 @@ import retrofit2.http.Path;
 public interface Service {
 
     /******************* CRUD USUARIOS *******************/
-    @GET("/usuario")
+    @GET("/api/usuario")
     Call<List<Usuario>> getUsuarios();
 
     @GET("/api/usuario/{username}")
@@ -42,7 +35,16 @@ public interface Service {
     Call<List<Evento>> getEventos();
 
     @GET("/api/evento/user/{username}")
-    Call<List<Evento>> getEventosUser(@Path("username") String username);
+    Call<List<Evento>> getEventosPart(@Path("username") String username);
+
+    @GET("/api/evento/org/{username}")
+    Call<List<Evento>> getEventosOrg(@Path("username") String username);
+
+    @GET("/api/evento/disp/{username}")
+    Call<List<Evento>> getEventosDisp(@Path("username") String username);
+
+    @GET("/api/evento/pass/{username}")
+    Call<List<Evento>> getEventosPass(@Path("username") String username);
 
     @GET("/api/evento/{idEvento}")
     Call<Evento> getEvento(@Path("idEvento") String idEvento);
@@ -61,14 +63,17 @@ public interface Service {
     @GET("/api/convidado")
     Call<List<Convidado>> getConvidados();
 
+    @GET("/api/convidado/list/{idEvento}")
+    Call<List<Convidado>> getConvidadosEvento(@Path("idEvento") String idEvento);
+
     @POST("/api/convidado/")
     Call<Convidado> postConvidado(@Body Convidado convidado);
 
     @PUT("/api/convidado/{idConvidado}")
     Call<Convidado> putConvidado(@Path("idConvidado") String id, @Body Convidado convidado);
 
-    @DELETE("/api/convidado/{idConvidado}")
-    Call<Convidado> deleteConvidado(@Path("idConvidado") String id);
+    @DELETE("/api/convidado/{nomeUsuario}/{idEvento}")
+    Call<Convidado> deleteConvidado(@Path("nomeUsuario") String nomeUsuario, @Path("idEvento") String idEvento);
 
 
     /******************* CRUD LEMBRETES *******************/
@@ -89,7 +94,7 @@ public interface Service {
 
 
     /******************* CRUD DICAS *******************/
-    @GET("/dica")
+    @GET("/api/dica")
     Call<List<Dica>> getDicas();
 
     @GET("/api/dica/{id}")

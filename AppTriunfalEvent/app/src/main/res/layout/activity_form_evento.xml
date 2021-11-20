@@ -10,6 +10,7 @@
 
     <ImageView
         android:id="@+id/logo_formEvento"
+        android:layout_marginTop="20dp"
         android:layout_width="112dp"
         android:layout_height="91dp"
         android:src="@drawable/icone_logo"
@@ -75,6 +76,7 @@
         android:drawableRight="@drawable/ic_baseline_calendar_today_24"
         android:textAlignment="center"
         android:textColorHint="@color/grey"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtDescricaoEvento_formEvento" />
@@ -88,20 +90,36 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-    <ProgressBar
-        android:id="@+id/progressBar_formEvent"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnBack_formEvent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:progressDrawable="@drawable/custom_loading_event"
+        android:backgroundTint="@color/brow_light"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnHome_formEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/brow_light"
+        android:drawableRight="@drawable/ic_baseline_home_24"
+        android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnProx_formEvent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/containerComponents" />
+        app:layout_constraintStart_toEndOf="@+id/btnBack_formEvent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
